@@ -179,12 +179,7 @@
               "$ref": "#/definitions/ServiceHealthResponseList"
             }
           }
-        },
-        "x-ms-examples": {
-          "ServiceGetHealth": {
-            "$ref": "./examples/ServiceGetHealth.json"
-          }
-        }
+        }        
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateAddress": {
