@@ -148,6 +148,45 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/serviceHealth": {
+      "get": {
+        "tags": [
+          "Service"
+        ],
+        "description": "This method returns the health of partner services.",
+        "operationId": "Service_GetHealth",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/locationParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The service health response.",
+            "schema": {
+              "$ref": "#/definitions/ServiceHealthResponseList"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ServiceGetHealth": {
+            "$ref": "./examples/ServiceGetHealth.json"
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateAddress": {
       "post": {
         "tags": [
@@ -773,15 +812,15 @@
               "values": [
                 {
                   "value": "DataBox",
-                  "description": "Databox."
+                  "description": "Data Box."
                 },
                 {
                   "value": "DataBoxDisk",
-                  "description": "DataboxDisk."
+                  "description": "Data Box Disk."
                 },
                 {
                   "value": "DataBoxHeavy",
-                  "description": "DataboxHeavy."
+                  "description": "Data Box Heavy."
                 }
               ]
             }
@@ -880,15 +919,15 @@
             "values": [
               {
                 "value": "DataBox",
-                "description": "Databox orders."
+                "description": "Data Box orders."
               },
               {
                 "value": "DataBoxDisk",
-                "description": "DataboxDisk orders."
+                "description": "Data Box Disk orders."
               },
               {
                 "value": "DataBoxHeavy",
-                "description": "DataboxHeavy orders."
+                "description": "Data Box Heavy orders."
               }
             ]
           }
@@ -1316,6 +1355,82 @@
         "accountId": {
           "description": "Destination storage account id.",
           "type": "string"
+        },
+        "sharedAccessSignature": {
+          "description": "Shared access signature for the storage account.",
+          "type": "string"
+        },
+        "accountType": {
+          "description": "Account type.",
+          "enum": [
+            "UnknownType",
+            "GeneralPurposeStorage",
+            "BlobStorage"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "AccountType",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "UnknownType"
+              },
+              {
+                "value": "GeneralPurposeStorage"
+              },
+              {
+                "value": "BlobStorage"
+              }
+            ]
+          }
+        },
+        "storageAccessTier": {
+          "description": "Access tier of the account.",
+          "enum": [
+            "Invalid",
+            "Hot",
+            "Cool",
+            "Cold"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "AccessTier",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "Invalid"
+              },
+              {
+                "value": "Hot"
+              },
+              {
+                "value": "Cool"
+              },
+              {
+                "value": "Cold"
+              }
+            ]
+          }
+        },
+        "storagePerformanceTier": {
+          "description": "Performance tier of the account.",
+          "enum": [
+            "Standard",
+            "Premium"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "PerformanceTier",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "Standard"
+              },
+              {
+                "value": "Premium"
+              }
+            ]
+          }
         }
       }
     },
@@ -1437,15 +1552,15 @@
             "values": [
               {
                 "value": "DataBox",
-                "description": "Databox orders."
+                "description": "Data Box orders."
               },
               {
                 "value": "DataBoxDisk",
-                "description": "DataboxDisk orders."
+                "description": "Data Box Disk orders."
               },
               {
                 "value": "DataBoxHeavy",
-                "description": "DataboxHeavy orders."
+                "description": "Data Box Heavy orders."
               }
             ]
           }
@@ -1562,15 +1677,15 @@
               },
               {
                 "value": "PickedUp",
-                "description": "Device has been picked up from user and in transit to azure datacenter."
+                "description": "Device has been picked up from user and in transit to Azure datacenter."
               },
               {
                 "value": "AtAzureDC",
-                "description": "Device has been received at azure datacenter from the user."
+                "description": "Device has been received at Azure datacenter from the user."
               },
               {
                 "value": "DataCopy",
-                "description": "Data copy from the device at azure datacenter."
+                "description": "Data copy from the device at Azure datacenter."
               },
               {
                 "value": "Completed",
@@ -1590,7 +1705,7 @@
               },
               {
                 "value": "Failed_IssueDetectedAtAzureDC",
-                "description": "Order has failed due to issue detected at azure datacenter."
+                "description": "Order has failed due to issue detected at Azure datacenter."
               },
               {
                 "value": "Aborted",
@@ -1709,15 +1824,15 @@
             "values": [
               {
                 "value": "DataBox",
-                "description": "Databox orders."
+                "description": "Data Box orders."
               },
               {
                 "value": "DataBoxDisk",
-                "description": "DataboxDisk orders."
+                "description": "Data Box Disk orders."
               },
               {
                 "value": "DataBoxHeavy",
-                "description": "DataboxHeavy orders."
+                "description": "Data Box Heavy orders."
               }
             ]
           }
@@ -1770,15 +1885,15 @@
               },
               {
                 "value": "PickedUp",
-                "description": "Device has been picked up from user and in transit to azure datacenter."
+                "description": "Device has been picked up from user and in transit to Azure datacenter."
               },
               {
                 "value": "AtAzureDC",
-                "description": "Device has been received at azure datacenter from the user."
+                "description": "Device has been received at Azure datacenter from the user."
               },
               {
                 "value": "DataCopy",
-                "description": "Data copy from the device at azure datacenter."
+                "description": "Data copy from the device at Azure datacenter."
               },
               {
                 "value": "Completed",
@@ -1798,7 +1913,7 @@
               },
               {
                 "value": "Failed_IssueDetectedAtAzureDC",
-                "description": "Order has failed due to issue detected at azure datacenter."
+                "description": "Order has failed due to issue detected at Azure datacenter."
               },
               {
                 "value": "Aborted",
@@ -1922,7 +2037,7 @@
               },
               {
                 "value": "AtAzureDC",
-                "description": "Notification at device received at azure datacenter stage."
+                "description": "Notification at device received at Azure datacenter stage."
               },
               {
                 "value": "DataCopy",
@@ -2071,6 +2186,47 @@
         }
       },
       "x-ms-azure-resource": true
+    },
+    "ServiceHealthResponse": {
+      "description": "Response of the GetServiceHealth api.",
+      "type": "object",
+      "properties": {
+        "connectorType": {
+          "description": "Name of the connector.",
+          "type": "string"
+        },
+        "startTime": {
+          "format": "date-time",
+          "description": "Time when the action was triggered.",
+          "type": "string"
+        },
+        "endTime": {
+          "format": "date-time",
+          "description": "Time when the action got completed.",
+          "type": "string"
+        },
+        "status": {
+          "description": "Status of the service.",
+          "type": "boolean"
+        }
+      }
+    },
+    "ServiceHealthResponseList": {
+      "description": "List of service health response.",
+      "type": "object",
+      "properties": {
+        "dependencies": {
+          "description": "List of ServiceHealthResponse.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceHealthResponse"
+          }
+        },
+        "serviceVersion": {
+          "description": "Version of the service.",
+          "type": "string"
+        }
+      }
     },
     "ShareCredentialDetails": {
       "description": "Credential details of the shares in account.",
@@ -2294,15 +2450,15 @@
             "values": [
               {
                 "value": "DataBox",
-                "description": "Databox."
+                "description": "Data Box."
               },
               {
                 "value": "DataBoxDisk",
-                "description": "DataboxDisk."
+                "description": "Data Box Disk."
               },
               {
                 "value": "DataBoxHeavy",
-                "description": "DataboxHeavy."
+                "description": "Data Box Heavy."
               }
             ]
           }
@@ -2429,7 +2585,7 @@
               },
               {
                 "value": "Region",
-                "description": "SKU is not available to push data to the requested storage account region."
+                "description": "SKU is not available to push data to the requested Azure region."
               },
               {
                 "value": "Feature",
@@ -2544,15 +2700,15 @@
             "values": [
               {
                 "value": "DataBox",
-                "description": "Databox."
+                "description": "Data Box."
               },
               {
                 "value": "DataBoxDisk",
-                "description": "DataboxDisk."
+                "description": "Data Box Disk."
               },
               {
                 "value": "DataBoxHeavy",
-                "description": "DataboxHeavy."
+                "description": "Data Box Heavy."
               }
             ]
           }
