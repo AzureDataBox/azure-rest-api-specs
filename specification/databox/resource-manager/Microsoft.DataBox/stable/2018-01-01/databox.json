@@ -1351,6 +1351,10 @@
           "description": "Destination storage account id.",
           "type": "string"
         },
+        "alternateAccountId": {
+          "description": "Alternate Destination storage account id.",
+          "type": "string"
+        },
         "sharedAccessSignature": {
           "description": "Shared access signature for the storage account.",
           "type": "string"
