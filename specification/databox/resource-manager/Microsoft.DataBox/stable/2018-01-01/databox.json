@@ -1352,7 +1352,7 @@
           "type": "string"
         },
         "alternateAccountId": {
-          "description": "Alternate Destination storage account id.",
+          "description": "Alternate Destination storage account id. AccountId will be replaced with this if sharedAccessSignature is passed.",
           "type": "string"
         },
         "sharedAccessSignature": {
@@ -1375,10 +1375,12 @@
                 "value": "UnknownType"
               },
               {
-                "value": "GeneralPurposeStorage"
+                "value": "GeneralPurposeStorage",
+                "description": "General-purpose Storage Account gives access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks "
               },
               {
-                "value": "BlobStorage"
+                "value": "BlobStorage",
+                "description": "Blob Storage Account is a specialized storage account for storing unstructured data as blobs (objects) "
               }
             ]
           }
@@ -1400,13 +1402,16 @@
                 "value": "Invalid"
               },
               {
-                "value": "Hot"
+                "value": "Hot",
+                "description": "Hot Access tier for storage account"
               },
               {
-                "value": "Cool"
+                "value": "Cool",
+                "description": "Cool Access tier for storage account"
               },
               {
-                "value": "Cold"
+                "value": "Cold",
+                "description": "Cold Access tier for storage account"
               }
             ]
           }
@@ -1423,10 +1428,12 @@
             "modelAsExtensible": true,
             "values": [
               {
-                "value": "Standard"
+                "value": "Standard",
+                "description": "Standard performance tier for storage account"
               },
               {
-                "value": "Premium"
+                "value": "Premium",
+                "description": "Premium performance tier for storage account"
               }
             ]
           }
@@ -2566,7 +2573,8 @@
             "Country",
             "Region",
             "Feature",
-            "OfferType"
+            "OfferType",
+            "NoSubscriptionInfo"
           ],
           "type": "string",
           "readOnly": true,
@@ -2593,6 +2601,10 @@
               {
                 "value": "OfferType",
                 "description": "Subscription does not have required offer types for the SKU."
+              },
+              {
+                "value": "NoSubscriptionInfo",
+                "description": "Subscription has not registered to Microsoft.DataBox and Service does not have the subscription notification."
               }
             ]
           }
