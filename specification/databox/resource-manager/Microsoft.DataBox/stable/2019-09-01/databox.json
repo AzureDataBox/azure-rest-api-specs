@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2018-01-01",
+    "version": "2019-09-01",
     "title": "DataBoxManagementClient"
   },
   "host": "management.azure.com",
@@ -132,7 +132,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The list of available skus.",
+            "description": "The list of available skus under subscription.",
             "schema": {
               "$ref": "#/definitions/AvailableSkusResult"
             }
@@ -147,7 +147,61 @@
           }
         }
       }
-    },    
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "description": "This method provides the list of available skus for the given subscription, resource group and location.",
+        "operationId": "Service_ListAvailableSkusByResourceGroup",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/locationParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "availableSkuRequest",
+            "in": "body",
+            "description": "Filters for showing the available skus.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AvailableSkuRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of available skus under Resource group.",
+            "schema": {
+              "$ref": "#/definitions/AvailableSkusResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "AvailableSkusByResourceGroup": {
+            "$ref": "./examples/AvailableSkusPost.json"
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateAddress": {
       "post": {
         "tags": [
@@ -189,9 +243,109 @@
             }
           }
         },
+        "deprecated": true,
         "x-ms-examples": {
           "ValidateAddressPost": {
             "$ref": "./examples/ValidateAddressPost.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/validateInputs": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "description": "This method does all necessary pre-job creation validation under resource group.",
+        "operationId": "Service_ValidateInputsByResourceGroup",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/locationParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "validationRequest",
+            "in": "body",
+            "description": "Inputs of the customer.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValidationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The validation status and responses of each validating parameter.",
+            "schema": {
+              "$ref": "#/definitions/ValidationResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ServiceValidateInputsByResourceGroup": {
+            "$ref": "./examples/ValidateInputsByResourceGroup.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateInputs": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "description": "This method does all necessary pre-job creation validation under subscription.",
+        "operationId": "Service_ValidateInputs",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/locationParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "validationRequest",
+            "in": "body",
+            "description": "Inputs of the customer.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValidationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The validation status and responses of each validating parameter.",
+            "schema": {
+              "$ref": "#/definitions/ValidationResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ServiceValidateInputs": {
+            "$ref": "./examples/ValidateInputs.json"
           }
         }
       }
@@ -605,6 +759,54 @@
           }
         }
       }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "description": "This API provides configuration details specific to given region/location.",
+        "operationId": "Service_RegionConfiguration",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/locationParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "regionConfigurationRequest",
+            "in": "body",
+            "description": "Request body to get the configuration for the region.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegionConfigurationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Region configuration response.",
+            "schema": {
+              "$ref": "#/definitions/RegionConfigurationResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ServiceRegionConfiguration": {
+            "$ref": "./examples/RegionConfiguration.json"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -616,6 +818,34 @@
           "description": "Name of the account.",
           "type": "string",
           "readOnly": true
+        },
+        "dataDestinationType": {
+          "description": "Data Destination Type.",
+          "enum": [
+            "UnknownType",
+            "StorageAccount",
+            "ManagedDisk"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "DataDestinationType",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "UnknownType",
+                "description": "Unknown type."
+              },
+              {
+                "value": "StorageAccount",
+                "description": "Storage Accounts ."
+              },
+              {
+                "value": "ManagedDisk",
+                "description": "Azure Managed disk storage."
+              }
+            ]
+          }
         },
         "accountConnectionString": {
           "description": "Connection string of the account endpoint to use the account as a storage endpoint on the device.",
@@ -647,6 +877,11 @@
     "AddressValidationProperties": {
       "description": "The address validation output.",
       "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputResponse"
+        }
+      ],
       "properties": {
         "validationStatus": {
           "description": "The address validation status.",
@@ -684,7 +919,8 @@
           },
           "readOnly": true
         }
-      }
+      },
+      "x-ms-discriminator-value": "ValidateAddress"
     },
     "ApplianceNetworkConfiguration": {
       "description": "The Network Adapter configuration of a DataBox.",
@@ -905,6 +1141,34 @@
           "type": "string",
           "readOnly": true
         },
+        "dataDestinationType": {
+          "description": "Data Destination Type.",
+          "enum": [
+            "UnknownType",
+            "StorageAccount",
+            "ManagedDisk"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "DataDestinationType",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "UnknownType",
+                "description": "Unknown type."
+              },
+              {
+                "value": "StorageAccount",
+                "description": "Storage Accounts ."
+              },
+              {
+                "value": "ManagedDisk",
+                "description": "Azure Managed disk storage."
+              }
+            ]
+          }
+        },
         "accountId": {
           "description": "Id of the account where the data needs to be uploaded.",
           "type": "string",
@@ -933,8 +1197,114 @@
           "description": "Total number of files to be processed by the job.",
           "type": "integer",
           "readOnly": true
+        },
+        "invalidFilesProcessed": {
+          "format": "int64",
+          "description": "Number of files not adhering to azure naming conventions which were processed by automatic renaming",
+          "type": "integer",
+          "readOnly": true
+        },
+        "invalidFileBytesUploaded": {
+          "format": "int64",
+          "description": "Total amount of data not adhering to azure naming conventions which were processed by automatic renaming",
+          "type": "integer",
+          "readOnly": true
+        },
+        "renamedContainerCount": {
+          "format": "int64",
+          "description": "Number of folders not adhering to azure naming conventions which were processed by automatic renaming",
+          "type": "integer",
+          "readOnly": true
+        },
+        "filesErroredOut": {
+          "format": "int64",
+          "description": "Number of files which could not be copied",
+          "type": "integer",
+          "readOnly": true
         }
       }
+    },
+    "CreateOrderLimitForSubscriptionValidationRequest": {
+      "description": "Request to validate create order limit for current subscription.",
+      "required": [
+        "deviceType"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputRequest"
+        }
+      ],
+      "properties": {
+        "deviceType": {
+          "description": "Device type to be used for the job.",
+          "enum": [
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SkuName",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "DataBox",
+                "description": "Data Box."
+              },
+              {
+                "value": "DataBoxDisk",
+                "description": "Data Box Disk."
+              },
+              {
+                "value": "DataBoxHeavy",
+                "description": "Data Box Heavy."
+              }
+            ]
+          }
+        }
+      },
+      "x-ms-discriminator-value": "ValidateCreateOrderLimit"
+    },
+    "CreateOrderLimitForSubscriptionValidationResponseProperties": {
+      "description": "Properties of create order limit for subscription validation response.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputResponse"
+        }
+      ],
+      "properties": {
+        "status": {
+          "description": "Create order limit validation status.",
+          "enum": [
+            "Valid",
+            "Invalid",
+            "Skipped"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ValidationStatus",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "Valid",
+                "description": "Valid"
+              },
+              {
+                "value": "Invalid",
+                "description": "Invalid"
+              },
+              {
+                "value": "Skipped",
+                "description": "Skipped"
+              }
+            ]
+          }
+        }
+      },
+      "x-ms-discriminator-value": "ValidateCreateOrderLimit"
     },
     "DataBoxAccountCopyLogDetails": {
       "description": "Copy log details for a storage account of a DataBox job",
@@ -1175,6 +1545,10 @@
             "$ref": "#/definitions/CopyProgress"
           },
           "readOnly": true
+        },
+        "devicePassword": {
+          "description": "Set Device password for unlocking Databox Heavy",
+          "type": "string"
         }
       },
       "x-ms-discriminator-value": "DataBoxHeavy"
@@ -1258,6 +1632,10 @@
             "$ref": "#/definitions/CopyProgress"
           },
           "readOnly": true
+        },
+        "devicePassword": {
+          "description": "Set Device password for unlocking Databox",
+          "type": "string"
         }
       },
       "x-ms-discriminator-value": "DataBox"
@@ -1279,6 +1657,21 @@
           }
         }
       },
+      "x-ms-discriminator-value": "DataBox"
+    },
+    "DataBoxScheduleAvailabilityRequest": {
+      "description": "Request body to get the availability for scheduling data box orders orders.",
+      "required": [
+        "storageLocation",
+        "skuName"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ScheduleAvailabilityRequest"
+        }
+      ],
+      "properties": {},
       "x-ms-discriminator-value": "DataBox"
     },
     "DataBoxSecret": {
@@ -1317,6 +1710,73 @@
           "readOnly": true
         }
       }
+    },
+    "DataDestinationDetailsValidationRequest": {
+      "description": "Request to validate data destination details.",
+      "required": [
+        "destinationAccountDetails",
+        "location"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputRequest"
+        }
+      ],
+      "properties": {
+        "destinationAccountDetails": {
+          "description": "Destination account details list.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DestinationAccountDetails"
+          }
+        },
+        "location": {
+          "description": "Location of stamp or geo.",
+          "type": "string"
+        }
+      },
+      "x-ms-discriminator-value": "ValidateDataDestinationDetails"
+    },
+    "DataDestinationDetailsValidationResponseProperties": {
+      "description": "Properties of data destination details validation response.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputResponse"
+        }
+      ],
+      "properties": {
+        "status": {
+          "description": "Data destination details validation status.",
+          "enum": [
+            "Valid",
+            "Invalid",
+            "Skipped"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ValidationStatus",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "Valid",
+                "description": "Valid"
+              },
+              {
+                "value": "Invalid",
+                "description": "Invalid"
+              },
+              {
+                "value": "Skipped",
+                "description": "Skipped"
+              }
+            ]
+          }
+        }
+      },
+      "x-ms-discriminator-value": "ValidateDataDestinationDetails"
     },
     "DestinationAccountDetails": {
       "description": "Details of the destination of the data",
@@ -1400,6 +1860,32 @@
         "storageAccountId": {
           "description": "Destination Storage Account Arm Id.",
           "type": "string"
+        },
+        "accountType": {
+          "description": "Account type.",
+          "enum": [
+            "UnknownType",
+            "GeneralPurposeStorage",
+            "BlobStorage"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "AccountType",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "UnknownType"
+              },
+              {
+                "value": "GeneralPurposeStorage",
+                "description": "General-purpose Storage Account gives access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks "
+              },
+              {
+                "value": "BlobStorage",
+                "description": "Blob Storage Account is a specialized storage account for storing unstructured data as blobs (objects) "
+              }
+            ]
+          }
         }
       },
       "x-ms-discriminator-value": "StorageAccount"
@@ -1419,6 +1905,28 @@
           "readOnly": true
         }
       }
+    },
+    "DiskScheduleAvailabilityRequest": {
+      "description": "Request body to get the availability for scheduling disk orders.",
+      "required": [
+        "expectedDataSizeInTeraBytes",
+        "storageLocation",
+        "skuName"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ScheduleAvailabilityRequest"
+        }
+      ],
+      "properties": {
+        "expectedDataSizeInTeraBytes": {
+          "format": "int32",
+          "description": "The expected size of the data, which needs to be transfered in this job, in tera bytes.",
+          "type": "integer"
+        }
+      },
+      "x-ms-discriminator-value": "DataBoxDisk"
     },
     "DiskSecret": {
       "description": "Contains all the secrets of a Disk.",
@@ -1449,6 +1957,32 @@
           "description": "Describes the error in detail and provides debugging information.",
           "type": "string",
           "readOnly": true
+        }
+      }
+    },
+    "HeavyScheduleAvailabilityRequest": {
+      "description": "Request body to get the availability for scheduling heavy orders.",
+      "required": [
+        "storageLocation",
+        "skuName"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ScheduleAvailabilityRequest"
+        }
+      ],
+      "properties": {},
+      "x-ms-discriminator-value": "DataBoxHeavy"
+    },
+    "JobDeliveryInfo": {
+      "description": "Additional delivery info.",
+      "type": "object",
+      "properties": {
+        "scheduledDateTime": {
+          "format": "date-time",
+          "description": "Scheduled date time.",
+          "type": "string"
         }
       }
     },
@@ -1621,7 +2155,8 @@
             "Cancelled",
             "Failed_IssueReportedAtCustomer",
             "Failed_IssueDetectedAtAzureDC",
-            "Aborted"
+            "Aborted",
+            "CompletedWithWarnings"
           ],
           "type": "string",
           "readOnly": true,
@@ -1680,6 +2215,10 @@
               {
                 "value": "Aborted",
                 "description": "Order has been aborted."
+              },
+              {
+                "value": "CompletedWithWarnings",
+                "description": "Order has completed with warnings."
               }
             ]
           }
@@ -1703,6 +2242,34 @@
           "description": "Reason for cancellation.",
           "type": "string",
           "readOnly": true
+        },
+        "deliveryType": {
+          "description": "Delivery type of Job.",
+          "enum": [
+            "NonScheduled",
+            "Scheduled"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "JobDeliveryType",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "NonScheduled"
+              },
+              {
+                "value": "Scheduled"
+              }
+            ]
+          }
+        },
+        "deliveryInfo": {
+          "$ref": "#/definitions/JobDeliveryInfo",
+          "description": "Delivery Info of Job."
+        },
+        "isCancellableWithoutFee": {
+          "description": "Flag to indicate cancellation of scheduled job.",
+          "type": "boolean"
         }
       }
     },
@@ -1829,7 +2396,8 @@
             "Cancelled",
             "Failed_IssueReportedAtCustomer",
             "Failed_IssueDetectedAtAzureDC",
-            "Aborted"
+            "Aborted",
+            "CompletedWithWarnings"
           ],
           "type": "string",
           "readOnly": true,
@@ -1888,6 +2456,10 @@
               {
                 "value": "Aborted",
                 "description": "Order has been aborted."
+              },
+              {
+                "value": "CompletedWithWarnings",
+                "description": "Order has completed with warnings."
               }
             ]
           }
@@ -2120,10 +2692,125 @@
       "type": "object",
       "properties": {
         "preferredDataCenterRegion": {
+		  "description": "Preferred Data Center Region.",
           "type": "array",
           "items": {
             "type": "string"
           }
+        },
+        "transportPreferences": {
+          "$ref": "#/definitions/TransportPreferences",
+          "description": "Preferences related to the shipment logistics of the sku."
+        }
+      }
+    },
+    "PreferencesValidationRequest": {
+      "description": "Request to validate preference of transport and data center.",
+      "required": [
+        "deviceType"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputRequest"
+        }
+      ],
+      "properties": {
+        "preference": {
+          "description":"Preference requested with respect to transport type and data center",
+          "$ref": "#/definitions/Preferences"
+        },
+        "deviceType": {
+          "description": "Device type to be used for the job.",
+          "enum": [
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SkuName",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "DataBox",
+                "description": "Data Box."
+              },
+              {
+                "value": "DataBoxDisk",
+                "description": "Data Box Disk."
+              },
+              {
+                "value": "DataBoxHeavy",
+                "description": "Data Box Heavy."
+              }
+            ]
+          }
+        }
+      },
+      "x-ms-discriminator-value": "ValidatePreferences"
+    },
+    "PreferencesValidationResponseProperties": {
+      "description": "Properties of data center and transport preference validation response.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputResponse"
+        }
+      ],
+      "properties": {
+        "status": {
+          "description": "Validation status of requested data center and transport.",
+          "enum": [
+            "Valid",
+            "Invalid",
+            "Skipped"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ValidationStatus",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "Valid",
+                "description": "Valid"
+              },
+              {
+                "value": "Invalid",
+                "description": "Invalid"
+              },
+              {
+                "value": "Skipped",
+                "description": "Skipped"
+              }
+            ]
+          }
+        }
+      },
+      "x-ms-discriminator-value": "ValidatePreferences"
+    },
+    "RegionConfigurationRequest": {
+      "description": "Request body to get the configuration for the region.",
+      "required": [
+        "scheduleAvailabilityRequest"
+      ],
+      "type": "object",
+      "properties": {
+        "scheduleAvailabilityRequest": {
+          "$ref": "#/definitions/ScheduleAvailabilityRequest",
+          "description": "Request body to get the availability for scheduling orders."
+        }
+      }
+    },
+    "RegionConfigurationResponse": {
+      "description": "Configuration response specific to a region.",
+      "type": "object",
+      "properties": {
+        "scheduleAvailabilityResponse": {
+          "$ref": "#/definitions/ScheduleAvailabilityResponse",
+          "description": "Schedule availability response",
+          "readOnly": true
         }
       }
     },
@@ -2156,7 +2843,64 @@
         }
       },
       "x-ms-azure-resource": true
-    },    
+    }, 
+    "ScheduleAvailabilityRequest": {
+      "description": "Request body to get the availability for scheduling orders.",
+      "required": [
+        "storageLocation",
+        "skuName"
+      ],
+      "type": "object",
+      "properties": {
+        "storageLocation": {
+          "description": "Location for data transfer. \r\nFor locations check: https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01",
+          "type": "string"
+        },
+        "skuName": {
+          "description": "Sku Name for which the order is to be scheduled.",
+          "enum": [
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SkuName",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "DataBox",
+                "description": "Data Box."
+              },
+              {
+                "value": "DataBoxDisk",
+                "description": "Data Box Disk."
+              },
+              {
+                "value": "DataBoxHeavy",
+                "description": "Data Box Heavy."
+              }
+            ]
+          }
+        }
+      },
+      "discriminator": "skuName"
+    },
+    "ScheduleAvailabilityResponse": {
+      "description": "Schedule availability response",
+      "type": "object",
+      "properties": {
+        "availableDates": {
+          "description": "List of dates available to schedule",
+          "type": "array",
+          "items": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "readOnly": true
+        }
+      }
+    },   
     "ShareCredentialDetails": {
       "description": "Credential details of the shares in account.",
       "type": "object",
@@ -2407,6 +3151,116 @@
         }
       }
     },
+    "SkuAvailabilityValidationRequest": {
+      "description": "Request to validate sku availability.",
+      "required": [
+        "deviceType",
+        "transferType",
+        "country",
+        "location"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputRequest"
+        }
+      ],
+      "properties": {
+        "deviceType": {
+          "description": "Device type to be used for the job.",
+          "enum": [
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SkuName",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "DataBox",
+                "description": "Data Box."
+              },
+              {
+                "value": "DataBoxDisk",
+                "description": "Data Box Disk."
+              },
+              {
+                "value": "DataBoxHeavy",
+                "description": "Data Box Heavy."
+              }
+            ]
+          }
+        },
+        "transferType": {
+          "description": "Type of the transfer.",
+          "enum": [
+            "ImportToAzure"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "TransferType",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "ImportToAzure",
+                "description": "Import data to azure."
+              }
+            ]
+          }
+        },
+        "country": {
+          "description": "ISO country code. Country for hardware shipment. For codes check: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements",
+          "type": "string"
+        },
+        "location": {
+          "description": "Location for data transfer. For locations check: https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01",
+          "type": "string"
+        }
+      },
+      "x-ms-discriminator-value": "ValidateSkuAvailability"
+    },
+    "SkuAvailabilityValidationResponseProperties": {
+      "description": "Properties of sku availability validation response.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputResponse"
+        }
+      ],
+      "properties": {
+        "status": {
+          "description": "Sku availability validation status.",
+          "enum": [
+            "Valid",
+            "Invalid",
+            "Skipped"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ValidationStatus",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "Valid",
+                "description": "Valid"
+              },
+              {
+                "value": "Invalid",
+                "description": "Invalid"
+              },
+              {
+                "value": "Skipped",
+                "description": "Skipped"
+              }
+            ]
+          }
+        }
+      },
+      "x-ms-discriminator-value": "ValidateSkuAvailability"
+    },
     "SkuCapacity": {
       "description": "Capacity of the sku.",
       "type": "object",
@@ -2502,7 +3356,8 @@
             "Region",
             "Feature",
             "OfferType",
-            "NoSubscriptionInfo"
+            "NoSubscriptionInfo",
+            "CustomerUnregistered"
           ],
           "type": "string",
           "readOnly": true,
@@ -2533,6 +3388,10 @@
               {
                 "value": "NoSubscriptionInfo",
                 "description": "Subscription has not registered to Microsoft.DataBox and Service does not have the subscription notification."
+              },
+              {
+                "value": "CustomerUnregistered",
+                "description": "Customer unregistered from the subscription."
               }
             ]
           }
@@ -2546,6 +3405,88 @@
           "description": "Required feature to access the sku.",
           "type": "string",
           "readOnly": true
+        }
+      }
+    },
+    "SubscriptionIsAllowedToCreateJobValidationRequest": {
+      "description": "Request to validate subscription permission to create jobs.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputRequest"
+        }
+      ],
+      "properties": {},
+      "x-ms-discriminator-value": "ValidateSubscriptionIsAllowedToCreateJob"
+    },
+    "SubscriptionIsAllowedToCreateJobValidationResponseProperties": {
+      "description": "Properties of subscription permission to create job validation response.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputResponse"
+        }
+      ],
+      "properties": {
+        "status": {
+          "description": "Validation status of subscription permission to create job.",
+          "enum": [
+            "Valid",
+            "Invalid",
+            "Skipped"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ValidationStatus",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "Valid",
+                "description": "Valid"
+              },
+              {
+                "value": "Invalid",
+                "description": "Invalid"
+              },
+              {
+                "value": "Skipped",
+                "description": "Skipped"
+              }
+            ]
+          }
+        }
+      },
+      "x-ms-discriminator-value": "ValidateSubscriptionIsAllowedToCreateJob"
+    },
+    "TransportPreferences": {
+      "description": "Preferences related to the shipment logistics of the sku",
+      "required": [
+        "preferredShipmentType"
+      ],
+      "type": "object",
+      "properties": {
+        "preferredShipmentType": {
+          "description": "Indicates Shipment Logistics type that the customer preferred.",
+          "enum": [
+            "CustomerManaged",
+            "MicrosoftManaged"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "TransportPreferenceType",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "CustomerManaged",
+                "description": "Shipment Logistics is handled by the customer."
+              },
+              {
+                "value": "MicrosoftManaged",
+                "description": "Shipment Logistics is handled by Microsoft."
+              }
+            ]
+          }
         }
       }
     },
@@ -2620,6 +3561,11 @@
         "deviceType"
       ],
       "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationInputRequest"
+        }
+      ],
       "properties": {
         "shippingAddress": {
           "$ref": "#/definitions/ShippingAddress",
@@ -2651,6 +3597,142 @@
               }
             ]
           }
+        },
+        "transportPreferences": {
+          "$ref": "#/definitions/TransportPreferences",
+          "description": "Preferences related to the shipment logistics of the sku."
+        }
+      },
+      "x-ms-discriminator-value": "ValidateAddress"
+    },
+    "ValidationInputRequest": {
+      "description": "Minimum fields that must be present in any type of validation request.",
+      "type": "object",
+      "properties": {},
+      "discriminator": "validationType"
+    },
+    "ValidationInputResponse": {
+      "description": "Minimum properties that should be present in each individual validation response.",
+      "type": "object",
+      "properties": {
+        "validationType": {
+          "description": "Identifies the type of validation response.",
+          "enum": [
+            "ValidateAddress",
+            "ValidateDataDestinationDetails",
+            "ValidateSubscriptionIsAllowedToCreateJob",
+            "ValidatePreferences",
+            "ValidateCreateOrderLimit",
+            "ValidateSkuAvailability"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ValidationInputDiscriminator",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "ValidateAddress",
+                "description": "Identify request and response of address validation."
+              },
+              {
+                "value": "ValidateDataDestinationDetails",
+                "description": "Identify request and response of data destination details validation."
+              },
+              {
+                "value": "ValidateSubscriptionIsAllowedToCreateJob",
+                "description": "Identify request and response for validation of subscription permission to create job."
+              },
+              {
+                "value": "ValidatePreferences",
+                "description": "Identify request and response of preference validation."
+              },
+              {
+                "value": "ValidateCreateOrderLimit",
+                "description": "Identify request and response of create order limit for subscription validation."
+              },
+              {
+                "value": "ValidateSkuAvailability",
+                "description": "Identify request and response of active job limit for sku availibility."
+              }
+            ]
+          }
+        },
+        "error": {
+          "$ref": "#/definitions/Error",
+          "description": "Error code and message of validation response.",
+          "readOnly": true
+        }
+      },
+      "discriminator": "validationType"
+    },
+    "ValidationRequest": {
+      "description": "Input request for all pre job creation validation.",
+      "required": [
+        "individualRequestDetails"
+      ],
+      "type": "object",
+      "properties": {
+        "individualRequestDetails": {
+          "description": "List of request details contain validationType and its request as key and value respectively.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValidationInputRequest"
+          }
+        }
+      }
+    },
+    "ValidationResponse": {
+      "description": "Response of pre job creation validations.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ValidationResponseProperties",
+          "description": "Properties of pre job creation validation response.",
+          "readOnly": true,
+          "x-ms-client-flatten": true
+        }
+      }
+    },
+    "ValidationResponseProperties": {
+      "description": "Properties of pre job creation validation response.",
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "Overall validation status.",
+          "enum": [
+            "AllValidToProceed",
+            "InputsRevisitRequired",
+            "CertainInputValidationsSkipped"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "OverallValidationStatus",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "AllValidToProceed",
+                "description": "Every input request is valid."
+              },
+              {
+                "value": "InputsRevisitRequired",
+                "description": "Some input requests are not valid."
+              },
+              {
+                "value": "CertainInputValidationsSkipped",
+                "description": "Certain input validations skipped."
+              }
+            ]
+          }
+        },
+        "individualResponseDetails": {
+          "description": "List of response details contain validationType and its response as key and value respectively.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValidationInputResponse"
+          },
+          "readOnly": true
         }
       }
     }
