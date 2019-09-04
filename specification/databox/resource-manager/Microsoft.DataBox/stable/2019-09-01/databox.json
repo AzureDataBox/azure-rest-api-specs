@@ -197,7 +197,7 @@
         },
         "x-ms-examples": {
           "AvailableSkusByResourceGroup": {
-            "$ref": "./examples/AvailableSkusPost.json"
+            "$ref": "./examples/AvailableSkusPostByResourceGroup.json"
           }
         }
       }
@@ -1290,15 +1290,15 @@
             "values": [
               {
                 "value": "Valid",
-                "description": "Valid"
+                "description": "Validation is successful"
               },
               {
                 "value": "Invalid",
-                "description": "Invalid"
+                "description": "Validation is not successful"
               },
               {
                 "value": "Skipped",
-                "description": "Skipped"
+                "description": "Validation is skipped"
               }
             ]
           }
@@ -1762,15 +1762,15 @@
             "values": [
               {
                 "value": "Valid",
-                "description": "Valid"
+                "description": "Validation is successful"
               },
               {
                 "value": "Invalid",
-                "description": "Invalid"
+                "description": "Validation is not successful"
               },
               {
                 "value": "Skipped",
-                "description": "Skipped"
+                "description": "Validation is skipped"
               }
             ]
           }
@@ -1860,32 +1860,6 @@
         "storageAccountId": {
           "description": "Destination Storage Account Arm Id.",
           "type": "string"
-        },
-        "accountType": {
-          "description": "Account type.",
-          "enum": [
-            "UnknownType",
-            "GeneralPurposeStorage",
-            "BlobStorage"
-          ],
-          "type": "string",
-          "x-ms-enum": {
-            "name": "AccountType",
-            "modelAsExtensible": true,
-            "values": [
-              {
-                "value": "UnknownType"
-              },
-              {
-                "value": "GeneralPurposeStorage",
-                "description": "General-purpose Storage Account gives access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks "
-              },
-              {
-                "value": "BlobStorage",
-                "description": "Blob Storage Account is a specialized storage account for storing unstructured data as blobs (objects) "
-              }
-            ]
-          }
         }
       },
       "x-ms-discriminator-value": "StorageAccount"
@@ -2255,10 +2229,12 @@
             "modelAsExtensible": true,
             "values": [
               {
-                "value": "NonScheduled"
+                "value": "NonScheduled",
+                "description": "NonScheduled Order"
               },
               {
-                "value": "Scheduled"
+                "value": "Scheduled",
+                "description": "Scheduled Order"
               }
             ]
           }
@@ -2774,15 +2750,15 @@
             "values": [
               {
                 "value": "Valid",
-                "description": "Valid"
+                "description": "Validation is successful"
               },
               {
                 "value": "Invalid",
-                "description": "Invalid"
+                "description": "Validation is not successful"
               },
               {
                 "value": "Skipped",
-                "description": "Skipped"
+                "description": "Validation is skipped"
               }
             ]
           }
@@ -3245,15 +3221,15 @@
             "values": [
               {
                 "value": "Valid",
-                "description": "Valid"
+                "description": "Validation is successful"
               },
               {
                 "value": "Invalid",
-                "description": "Invalid"
+                "description": "Validation is not successful"
               },
               {
                 "value": "Skipped",
-                "description": "Skipped"
+                "description": "Validation is skipped"
               }
             ]
           }
@@ -3443,15 +3419,15 @@
             "values": [
               {
                 "value": "Valid",
-                "description": "Valid"
+                "description": "Validation is successful"
               },
               {
                 "value": "Invalid",
-                "description": "Invalid"
+                "description": "Validation is not successful"
               },
               {
                 "value": "Skipped",
-                "description": "Skipped"
+                "description": "Validation is skipped"
               }
             ]
           }
