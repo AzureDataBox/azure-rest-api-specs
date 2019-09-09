@@ -35,7 +35,7 @@ These settings apply only when `--tag=package-2018-01` is specified on the comma
 
 ``` yaml $(tag) == 'package-2018-01'
 input-file:
-- Microsoft.DataBox/stable/2019-08-01/databox.json
+- Microsoft.DataBox/stable/2018-01-01/databox.json
 ```
 
 ### Tag: package-2019-09
