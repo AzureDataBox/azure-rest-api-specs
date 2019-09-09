@@ -3584,7 +3584,51 @@
     "ValidationInputRequest": {
       "description": "Minimum fields that must be present in any type of validation request.",
       "type": "object",
-      "properties": {},
+      "properties": {
+        "validationType": {
+          "description": "Identifies the type of validation response.",
+          "enum": [
+            "ValidateAddress",
+            "ValidateDataDestinationDetails",
+            "ValidateSubscriptionIsAllowedToCreateJob",
+            "ValidatePreferences",
+            "ValidateCreateOrderLimit",
+            "ValidateSkuAvailability"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ValidationInputDiscriminator",
+            "modelAsExtensible": true,
+            "values": [
+              {
+                "value": "ValidateAddress",
+                "description": "Identify request and response of address validation."
+              },
+              {
+                "value": "ValidateDataDestinationDetails",
+                "description": "Identify request and response of data destination details validation."
+              },
+              {
+                "value": "ValidateSubscriptionIsAllowedToCreateJob",
+                "description": "Identify request and response for validation of subscription permission to create job."
+              },
+              {
+                "value": "ValidatePreferences",
+                "description": "Identify request and response of preference validation."
+              },
+              {
+                "value": "ValidateCreateOrderLimit",
+                "description": "Identify request and response of create order limit for subscription validation."
+              },
+              {
+                "value": "ValidateSkuAvailability",
+                "description": "Identify request and response of active job limit for sku availibility."
+              }
+            ]
+          }
+        }
+       },
       "discriminator": "validationType"
     },
     "ValidationInputResponse": {
