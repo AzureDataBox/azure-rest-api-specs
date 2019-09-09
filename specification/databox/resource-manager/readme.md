@@ -147,6 +147,7 @@ Please also specify `--go-sdk-folder=<path to the root directory of your azure-s
 
 ``` yaml $(tag) == 'package-2019-09' && $(go)
 output-folder: $(go-sdk-folder)/services/databox/mgmt/2019-09-01/databox
+```
 
 ## Ruby
 
