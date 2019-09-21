@@ -1778,6 +1778,17 @@
       },
       "x-ms-discriminator-value": "ValidateDataDestinationDetails"
     },
+    "DcAccessSecurityCode": {
+      "type": "object",
+      "properties": {
+        "forwardDCAccessCode": {
+        "type": "string"
+        },
+        "reverseDCAccessCode": {
+          "type": "string"
+        }
+      }
+	},
     "DestinationAccountDetails": {
       "description": "Details of the destination of the data",
       "required": [
@@ -1814,6 +1825,10 @@
         },
         "accountId": {
           "description": "Arm Id of the destination where the data has to be moved.",
+          "type": "string"
+        },
+        "sharePassword": {
+          "description": "Share password to be shared by all shares in SA.",
           "type": "string"
         }
       },
@@ -2130,7 +2145,9 @@
             "Failed_IssueReportedAtCustomer",
             "Failed_IssueDetectedAtAzureDC",
             "Aborted",
-            "CompletedWithWarnings"
+            "CompletedWithWarnings",
+            "ReadyToDispatchFromAzureDC",
+            "ReadyToReceiveAtAzureDC"
           ],
           "type": "string",
           "readOnly": true,
@@ -2193,6 +2210,14 @@
               {
                 "value": "CompletedWithWarnings",
                 "description": "Order has completed with warnings."
+              },
+              {
+                "value": "ReadyToDispatchFromAzureDC",
+                "description": "Device is ready to be handed to customer from Azure DC."
+              },
+              {
+                "value": "ReadyToReceiveAtAzureDC",
+                "description": "Device can be dropped off at Azure DC."
               }
             ]
           }
@@ -2230,11 +2255,11 @@
             "values": [
               {
                 "value": "NonScheduled",
-                "description": "NonScheduled Order"
+                "description": "Non Scheduled job."
               },
               {
                 "value": "Scheduled",
-                "description": "Scheduled Order"
+                "description": "Scheduled job."
               }
             ]
           }
@@ -2245,7 +2270,8 @@
         },
         "isCancellableWithoutFee": {
           "description": "Flag to indicate cancellation of scheduled job.",
-          "type": "boolean"
+          "type": "boolean",
+          "readOnly": true
         }
       }
     },
@@ -2349,8 +2375,12 @@
               }
             ]
           }
-        }
-      },
+    },
+    "dcAccessSecurityCode": {
+      "$ref": "#/definitions/DcAccessSecurityCode",
+      "description": "Dc Access Security Code for Customer Managed Shipping"
+     }
+    },
       "discriminator": "jobSecretsType"
     },
     "JobStages": {
@@ -2373,7 +2403,9 @@
             "Failed_IssueReportedAtCustomer",
             "Failed_IssueDetectedAtAzureDC",
             "Aborted",
-            "CompletedWithWarnings"
+            "CompletedWithWarnings",
+            "ReadyToDispatchFromAzureDC",
+            "ReadyToReceiveAtAzureDC"
           ],
           "type": "string",
           "readOnly": true,
@@ -2436,6 +2468,14 @@
               {
                 "value": "CompletedWithWarnings",
                 "description": "Order has completed with warnings."
+              },
+              {
+                "value": "ReadyToDispatchFromAzureDC",
+                "description": "Device is ready to be handed to customer from Azure DC."
+              },
+              {
+                "value": "ReadyToReceiveAtAzureDC",
+                "description": "Device can be dropped off at Azure DC."
               }
             ]
           }
@@ -2776,6 +2816,10 @@
         "scheduleAvailabilityRequest": {
           "$ref": "#/definitions/ScheduleAvailabilityRequest",
           "description": "Request body to get the availability for scheduling orders."
+	},
+        "transportAvailabilityRequest": {
+          "$ref": "#/definitions/TransportAvailabilityRequest",
+          "description": "Request body to get the transport availability for given sku."
         }
       }
     },
@@ -2786,10 +2830,15 @@
         "scheduleAvailabilityResponse": {
           "$ref": "#/definitions/ScheduleAvailabilityResponse",
           "description": "Schedule availability response",
+	  "readOnly": true
+	},
+        "transportAvailabilityResponse": {
+          "$ref": "#/definitions/TransportAvailabilityResponse",
+          "description": "Transport options available for given sku in a region.",
           "readOnly": true
-        }
       }
-    },
+     }
+   },
     "Resource": {
       "description": "Model of the Resource.",
       "required": [
@@ -3332,8 +3381,7 @@
             "Region",
             "Feature",
             "OfferType",
-            "NoSubscriptionInfo",
-            "CustomerUnregistered"
+            "NoSubscriptionInfo"
           ],
           "type": "string",
           "readOnly": true,
@@ -3364,10 +3412,6 @@
               {
                 "value": "NoSubscriptionInfo",
                 "description": "Subscription has not registered to Microsoft.DataBox and Service does not have the subscription notification."
-              },
-              {
-                "value": "CustomerUnregistered",
-                "description": "Customer unregistered from the subscription."
               }
             ]
           }
@@ -3434,6 +3478,82 @@
         }
       },
       "x-ms-discriminator-value": "ValidateSubscriptionIsAllowedToCreateJob"
+      },
+    "TransportAvailabilityRequest": {
+      "description": "Request body to get the transport availability for given sku.",
+      "type": "object",
+      "properties": {
+        "skuName": {
+          "description": "Type of the device.",
+          "enum": [
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+          "name": "SkuName",
+          "modelAsExtensible": true,
+          "values": [
+          {
+            "value": "DataBox",
+            "description": "Data Box."
+          },
+          {
+            "value": "DataBoxDisk",
+            "description": "Data Box Disk."
+          },
+          {
+            "value": "DataBoxHeavy",
+            "description": "Data Box Heavy."
+          }
+         ]
+        }
+       }
+      }
+    },
+    "TransportAvailabilityResponse": {
+      "description": "Transport options available for given sku in a region.",
+      "type": "object",
+      "properties": {
+      "transportAvailabilityDetails": {
+        "description": "List of transport availability details for given region",
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/TransportAvailabilityDetails"
+         },
+        "readOnly": true
+      }
+     }
+    },
+    "TransportAvailabilityDetails": {
+      "description": "Transport options availability details for given region.",
+      "type": "object",
+      "properties": {
+        "shipmentType": {
+          "description": "Transport Shipment Type supported for given region.",
+          "enum": [
+          "CustomerManaged",
+          "MicrosoftManaged"
+         ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "TransportShipmentTypes",
+              "modelAsExtensible": true,
+              "values": [
+              {
+                "value": "CustomerManaged",
+                "description": "Shipment Logistics is handled by the customer."
+              },
+              {
+                "value": "MicrosoftManaged",
+                "description": "Shipment Logistics is handled by Microsoft."
+              }
+            ]
+          }
+        }
+      }
     },
     "TransportPreferences": {
       "description": "Preferences related to the shipment logistics of the sku",
@@ -3586,7 +3706,7 @@
       "type": "object",
       "properties": {
         "validationType": {
-          "description": "Identifies the type of validation response.",
+	    "description": "Identifies the type of validation request.",
           "enum": [
             "ValidateAddress",
             "ValidateDataDestinationDetails",
@@ -3689,6 +3809,7 @@
     "ValidationRequest": {
       "description": "Input request for all pre job creation validation.",
       "required": [
+        "validationCategory",
         "individualRequestDetails"
       ],
       "type": "object",
@@ -3699,8 +3820,26 @@
           "items": {
             "$ref": "#/definitions/ValidationInputRequest"
           }
+        },
+        "validationCategory": {
+          "description": "Identify the nature of validation.",
+          "enum": [
+           "JobCreationValidation"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "ValidationCategory",
+            "modelAsExtensible": true,
+            "values": [
+            {
+              "value": "JobCreationValidation",
+              "description": "Identify request of pre-job creation validations."
+            }
+          ]
         }
-      }
+     }
+    },
+     "discriminator": "validationCategory"
     },
     "ValidationResponse": {
       "description": "Response of pre job creation validations.",
