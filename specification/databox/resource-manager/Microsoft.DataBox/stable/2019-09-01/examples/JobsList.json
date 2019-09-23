@@ -1,17 +1,19 @@
 {
   "parameters": {
     "subscriptionId": "fa68082f-8ff7-4a25-95c7-ce9da541242f",
-    "api-version": "2018-01-01",
+    "api-version": "2019-09-01",
     "$expand": "details",
     "x-ms-client-request-id": [
-      "03e7ecda-9d8a-4883-ad1e-26ce670891ee"
+      "a3118d2e-2b53-4e95-860e-cd141dd57b15"
     ],
-    "accept-language": [
+    "Accept-Language": [
       "en-US"
     ],
     "User-Agent": [
-      "FxVersion/4.6.26614.01",
-      "Microsoft.Azure.Management.DataBox.DataBoxManagementClient/1.1.0"
+      "FxVersion/4.6.27817.01",
+      "OSName/Windows",
+      "OSVersion/Microsoft.Windows.10.0.18362.",
+      "Microsoft.Azure.Management.DataBox.DataBoxManagementClient/1.0.1"
     ]
   },
   "responses": {
@@ -20,62 +22,473 @@
         "value": [
           {
             "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-08-30T14:44:39.77401+05:30"              
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2018-11-27T15:17:49.0760408+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
             },
-            "location": "australiaeast",
+            "location": "westus",
             "tags": {},
             "sku": {
-              "name": "DataBoxDisk"
+              "name": "DataBox"
             },
-            "name": "mnaustest",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/ausresgrpmn/providers/Microsoft.DataBox/jobs/mnaustest",
+            "name": "testbadresourcegroup",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat3198inh0-9)inh(il(h)_fyoin)(upf(yLASD0-FJ(hal-DSNWP0JDS0P3-0SJ93/providers/Microsoft.DataBox/jobs/testbadresourcegroup",
             "type": "Microsoft.DataBox/jobs"
           },
           {
             "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-09-10T18:03:22.2578238+05:30"
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-01-04T09:08:49.9928621+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
             },
-            "location": "australiaeast",
+            "location": "westus",
             "tags": {},
             "sku": {
-              "name": "DataBoxDisk"
+              "name": "DataBox"
             },
-            "name": "portalcontractAUS",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/ausresgrpmn/providers/Microsoft.DataBox/jobs/portalcontractAUS",
+            "name": "andipodtest4jan",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/andipodtest4jan",
             "type": "Microsoft.DataBox/jobs"
           },
           {
             "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-08-30T15:17:17.3753642+05:30"
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-07-04T14:01:50.9232807+05:30",
+              "cancellationReason": "IncorrectOrder null",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
             },
-            "location": "australiaeast",
+            "location": "westus",
             "tags": {},
             "sku": {
-              "name": "DataBoxDisk"
+              "name": "DataBox"
             },
-            "name": "testBB-diskAU",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/testBB/providers/Microsoft.DataBox/jobs/testBB-diskAU",
+            "name": "testdeepak04-07",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdeepak04-07",
             "type": "Microsoft.DataBox/jobs"
           },
           {
             "properties": {
-              "isCancellable": true,
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-11T12:33:16.6231232+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBoxHeavy"
+            },
+            "name": "testdurga-heavy",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurga-heavy",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-11T12:38:49.0620094+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBoxHeavy"
+            },
+            "name": "testdurga-heavy1",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurga-heavy1",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-01-09T16:12:43.2931373+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBoxHeavy"
+            },
+            "name": "testdurga2",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurga2",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-01-09T15:59:47.4375821+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgad",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgad",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-01-09T19:04:31.4461343+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBoxDisk"
+            },
+            "name": "testdurgadisk",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgadisk",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-01-09T19:10:08.2854968+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBoxDisk"
+            },
+            "name": "testdurgadisk-Clone",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgadisk-Clone",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2018-12-19T14:23:06.8155601+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgam",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgam",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2018-12-19T16:46:12.824436+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgam-1",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgam-1",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-03-04T12:00:17.7643558+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgam-Clone",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgam-Clone",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2018-12-19T18:24:23.0774328+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-1",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-1",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-03-04T11:58:13.4876698+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-1-1",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-1-1",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-01-11T14:28:55.4375406+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-1-Clone",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-1-Clone",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-15T12:51:12.2717434+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-11",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-11",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-15T12:54:58.9886188+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-12",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-12",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-15T13:33:29.8417562+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-1dssd",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-1dssd",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-15T15:35:39.937519+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-ccxcx",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-ccxcx",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-01-09T15:56:58.4277564+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-Clone",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-Clone",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-10T14:46:10.401621+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-Clone-Clone",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-Clone-Clone",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2019-02-10T14:52:37.2363289+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-compute",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-compute",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
               "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-09-08T22:46:11.5143859+05:30"
+              "isShippingAddressEditable": false,
+              "status": "ReadyToDispatchFromAzureDC",
+              "startTime": "2019-02-10T14:57:32.3159255+05:30",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
+            },
+            "location": "westus",
+            "tags": {},
+            "sku": {
+              "name": "DataBox"
+            },
+            "name": "testdurgasm-compute1",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testdurgasm-compute1",
+            "type": "Microsoft.DataBox/jobs"
+          },
+          {
+            "properties": {
+              "isCancellable": false,
+              "isDeletable": true,
+              "isShippingAddressEditable": false,
+              "status": "Cancelled",
+              "startTime": "2018-09-08T22:46:11.5143859+05:30",
+              "cancellationReason": "Old job which is still in ordered state cancelled by the service",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": false
             },
             "location": "westus",
             "tags": {},
@@ -92,410 +505,21 @@
               "isDeletable": false,
               "isShippingAddressEditable": true,
               "status": "DeviceOrdered",
-              "startTime": "2018-08-21T15:19:38.5967539+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxHeavy"
-            },
-            "name": "testheavy1",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/autoallocation/providers/Microsoft.DataBox/jobs/testheavy1",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-28T14:07:33.0497881+05:30"
+              "startTime": "2019-07-30T10:47:22.083517+05:30",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": true
             },
             "location": "westus",
             "tags": {},
             "sku": {
               "name": "DataBox"
             },
-            "name": "TJ-636657717727899366",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/autoallocation/providers/Microsoft.DataBox/jobs/TJ-636657717727899366",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": false,
-              "isDeletable": false,
-              "isShippingAddressEditable": false,
-              "status": "PickedUp",
-              "startTime": "2018-09-06T16:23:58.7665181+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "abvetestups",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/abvetestups",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-08-21T14:08:42.9538214+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "disksmoketest",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/disksmoketest",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-08-08T07:52:22.8655902+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxHeavy"
-            },
-            "name": "heavyjob1029039",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/heavyjob1029039",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-08-30T14:26:12.0791245+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxHeavy"
-            },
-            "name": "heavyjob1029039-Clone",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/heavyjob1029039-Clone",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-07-06T05:48:00.4841388+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "sojaintest1",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/sojaintest1",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-09-04T12:05:35.7885962+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "testacispasskey",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/testacispasskey",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-09-04T12:19:50.1313891+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "testacispasskey1",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/testacispasskey1",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-09-04T12:27:03.679307+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "testacispasskey2",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/testacispasskey2",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-09-04T02:24:49.5106952+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "testingpasskey",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/testingpasskey",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-09-04T03:37:18.5000801+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "testingpasskey1",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/testingpasskey1",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-13T14:01:22.0918861+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636644753834613064",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636644753834613064",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": false,
-              "isDeletable": false,
-              "isShippingAddressEditable": false,
-              "status": "PickedUp",
-              "startTime": "2018-06-15T00:01:51.7887418+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636645978308049673",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636645978308049673",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-15T00:00:55.8926702+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636645978327256231",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636645978327256231",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-15T00:00:49.1912624+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636645978337105060",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636645978337105060",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": false,
-              "isDeletable": false,
-              "isShippingAddressEditable": false,
-              "status": "Delivered",
-              "startTime": "2018-06-15T09:34:08.5731715+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636646322037905056",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646322037905056",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-15T09:33:44.4557174+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636646322198505202",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646322198505202",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-16T00:00:42.7564714+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636646842116642570",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646842116642570",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": false,
-              "isDeletable": false,
-              "isShippingAddressEditable": false,
-              "status": "DevicePrepared",
-              "startTime": "2018-06-16T00:00:37.1560297+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "TJ-636646842129749628",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646842129749628",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-16T00:00:55.5759323+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636646842130208643",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646842130208643",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": false,
-              "isDeletable": false,
-              "isShippingAddressEditable": false,
-              "status": "PickedUp",
-              "startTime": "2018-06-16T00:01:43.7487451+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636646842175867545",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646842175867545",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-16T00:00:40.1336605+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBoxDisk"
-            },
-            "name": "TJ-636646842185996513",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646842185996513",
-            "type": "Microsoft.DataBox/jobs"
-          },
-          {
-            "properties": {
-              "isCancellable": true,
-              "isDeletable": false,
-              "isShippingAddressEditable": true,
-              "status": "DeviceOrdered",
-              "startTime": "2018-06-17T00:00:22.60807+05:30"
-            },
-            "location": "westus",
-            "tags": {},
-            "sku": {
-              "name": "DataBox"
-            },
-            "name": "TJ-636647706054109071",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636647706054109071",
+            "name": "testschedule01",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/akvenkat/providers/Microsoft.DataBox/jobs/testschedule01",
             "type": "Microsoft.DataBox/jobs"
           }
         ],
-        "nextLink": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/jobs?api-version=2018-01-01&%24skiptoken=dVJrb5swFP0v0bZvKcaBFipVUx5A0wVCDOb1zQZCDBhYIM%2bq%2f33uonXStEr%2bYN1z7zlH99zXUZOfhxVrqn70%2bDoKDc%2fH3uhxtBuGrn%2bUJE4aUuQ8b4Y7cj3s87u05VJ%2foH26Z93A2qaXtuReAxrcjrXt9mGsEKiOdTV9GKe5nhFVkaECt1K3b48sy%2fe9ZLN03%2fbtdrhbkIHM2rNUtrT%2fTjo2PgpcUD5BIGtjIIv37Utfsc5vq7x5che6QsNTkfHgksL6SEvAbE85Ldmsptw5JlZ9SK6AZRHiK9%2bAy1L7Culi02obqB8ygWahCUioHwJL3yehckOL5eK8oFAViCrHEerEH1M41LRUnDmbFsv5VAs%2bNJXLqpxqKzmp08YRvR8s82nhmkhNLSx4A8tk1MKi709F%2bHhnKlxDrfNntImjF0BuaqskqsSM7RlC0CQU44sP0Mwx5CGMkIvkbvCb6mSbNfZ80w6s%2fhxGXZmZ1SXwA4IAPvsVMnOsGh6X47x64XGd9YQ7wzrqmF23J9%2bSPWKhZ8RrZsMd93GspuHy4jWttgKfOfrHs0cn2V%2bvE4eZJQ2S%2b7h0wjwQXhqUhMbLJA5Smda7%2bw1PShqi31okRAdczphd1tcYyqV9wysEdeDzzrEr9Sf2nXVeGRcfo8AGKk6ujhtYqezO9XUS7QDm%2bsSDgeoW4Mf7JkVuWGyxSSJkU%2bjsRMLiJtRNyutB1FUx9x%2f8lqnAPs%2b8PB0%2fv5jR29sv"
+        "nextLink": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/jobs?api-version=2019-09-01&$skipToken=PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTE2Ij8%2bDQo8Q29udGludWF0aW9uVG9rZW4%2bDQogIDxDb250aW51YXRpb25Ub2tlbj4NCiAgICA8VmVyc2lvbj4yLjA8L1ZlcnNpb24%2bDQogICAgPFR5cGU%2bVGFibGU8L1R5cGU%2bDQogICAgPE5leHRQYXJ0aXRpb25LZXk%2bMSE4NCFabUUyT0RBNE1tWXRPR1ptTnkwMFlUSTFMVGsxWXpjdFkyVTVaR0UxTkRFeU5ESm1YekJmYldsamNtOXpiMlowTG1SaGRHRmliM2hmTUY5cWIySno8L05leHRQYXJ0aXRpb25LZXk%2bDQogICAgPE5leHRSb3dLZXk%2bMSE3MiFjbVZ6YjNWeVkyVnRZWEJ3YVc1blh6QmZjbWRmTUY5aGEzWmxibXRoZEY4d1gzUmxjM1J6WTJobFpIVnNaVEF4TFdOc2IyNWw8L05leHRSb3dLZXk%2bDQogICAgPFRhcmdldExvY2F0aW9uPlByaW1hcnk8L1RhcmdldExvY2F0aW9uPg0KICA8L0NvbnRpbnVhdGlvblRva2VuPg0KPC9Db250aW51YXRpb25Ub2tlbj4%3d"
       }
     }
   }

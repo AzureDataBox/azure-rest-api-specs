@@ -1,18 +1,20 @@
 {
   "parameters": {
     "subscriptionId": "fa68082f-8ff7-4a25-95c7-ce9da541242f",
-    "resourceGroupName": "SdkRg9836",
-    "api-version": "2018-01-01",
+    "resourceGroupName": "SdkRg4981",
+    "api-version": "2019-09-01",
     "$expand": "details",
     "x-ms-client-request-id": [
-      "62542393-3051-4952-8e59-625cc76e9abf"
+      "dc5cb221-1401-492c-abe7-9f74a5193c65"
     ],
-    "accept-language": [
+    "Accept-Language": [
       "en-US"
     ],
     "User-Agent": [
-      "FxVersion/4.6.26614.01",
-      "Microsoft.Azure.Management.DataBox.DataBoxManagementClient/1.1.0"
+      "FxVersion/4.6.27817.01",
+      "OSName/Windows",
+      "OSVersion/Microsoft.Windows.10.0.18362.",
+      "Microsoft.Azure.Management.DataBox.DataBoxManagementClient/1.0.1"
     ]
   },
   "responses": {
@@ -25,15 +27,17 @@
               "isDeletable": false,
               "isShippingAddressEditable": true,
               "status": "DeviceOrdered",
-              "startTime": "2018-09-11T17:58:36.6886059+05:30"
+              "startTime": "2019-09-21T14:49:49.0027611+05:30",
+              "deliveryType": "NonScheduled",
+              "isCancellableWithoutFee": true
             },
             "location": "westus",
             "tags": {},
             "sku": {
               "name": "DataBox"
             },
-            "name": "SdkJob8367",
-            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/SdkRg9836/providers/Microsoft.DataBox/jobs/SdkJob8367",
+            "name": "SdkJob3971",
+            "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/SdkRg4981/providers/Microsoft.DataBox/jobs/SdkJob3971",
             "type": "Microsoft.DataBox/jobs"
           }
         ]
