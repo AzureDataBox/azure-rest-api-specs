@@ -29,6 +29,9 @@
               "status": "DeviceOrdered",
               "startTime": "2019-09-21T14:49:49.0027611+05:30",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": true
             },
             "location": "westus",

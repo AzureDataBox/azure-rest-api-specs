@@ -20,6 +20,7 @@
       "311"
     ],
     "validateAddress": {
+      "validationType": "ValidateAddress",
       "shippingAddress": {
         "streetAddress1": "16 TOWNSEND ST",
         "streetAddress2": "Unit 1",
@@ -38,6 +39,7 @@
       "body": {
         "properties": {
           "validationStatus": "Valid",
+          "validationType" : "ValidateAddress",
           "alternateAddresses": [
             {
               "streetAddress1": "16 TOWNSEND ST",

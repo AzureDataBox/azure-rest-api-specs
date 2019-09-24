@@ -2,7 +2,7 @@
     "parameters": {
         "subscriptionId": "fa68082f-8ff7-4a25-95c7-ce9da541242f",
         "location": "westus",
-        "api-version": "2018-01-01",
+        "api-version": "2019-09-01",
         "x-ms-client-request-id": [
             "ee686d79-42c2-4b01-9afe-5e99f4cabfee"
         ],
@@ -19,15 +19,17 @@
         "Content-Length": [
             "311"
         ],
-        "ValidationRequest": {
-            "ValidationCategory": "JobCreationValidation",
-            "IndividualRequestDetails": [
+        "validationRequest": {
+            "validationCategory" : "JobCreationValidation", 
+            "individualRequestDetails": [
                 {
                     "validationType": "ValidateDataDestinationDetails",
-                    "DestinationAccountDetails": [
-                        {
-                            "storageAccountId": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/databoxbvt/providers/Microsoft.Storage/storageAccounts/databoxbvttestaccount"
-                        }
+                    "location" : "westus",
+                    "destinationAccountDetails": [
+                            {
+                             "storageAccountId" : "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/databoxbvt/providers/Microsoft.Storage/storageAccounts/databoxbvttestaccount",
+                             "dataDestinationType" : "StorageAccount"
+                            } 
                     ]
                 },
                 {

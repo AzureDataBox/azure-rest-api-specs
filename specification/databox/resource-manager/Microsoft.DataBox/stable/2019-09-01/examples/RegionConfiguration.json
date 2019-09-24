@@ -4,10 +4,10 @@
     "location": "westus",
     "api-version": "2018-01-01",
     "regionConfigurationRequest": {
-      "ScheduleAvailabilityRequest": {
-        "StorageLocation": "westus",
-        "SkuName": "DataBox"
-      }
+      "scheduleAvailabilityRequest": {
+        "storageLocation": "westus",
+        "skuName": "DataBox"
+      } 
     }
   },
   "responses": {

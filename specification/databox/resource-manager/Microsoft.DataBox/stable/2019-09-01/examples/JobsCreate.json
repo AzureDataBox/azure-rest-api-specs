@@ -46,7 +46,7 @@
           },
           "destinationAccountDetails": [
             {
-              "accountId": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/databoxbvt/providers/Microsoft.Storage/storageAccounts/databoxbvttestaccount",
+              "storageAccountId": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/databoxbvt/providers/Microsoft.Storage/storageAccounts/databoxbvttestaccount",
               "dataDestinationType": "StorageAccount"
             }
           ]
@@ -60,7 +60,6 @@
   },
   "responses": {
     "202": {
-      "body": ""
     },
     "200": {
       "body": {
@@ -170,7 +169,10 @@
             "jobDetailsType": "DataBox",
             "copyLogDetails": []
           },
-          "deliveryType": "NonScheduled"
+          "deliveryType": "NonScheduled",
+          "deliveryInfo": {
+            "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+          },
           "isCancellableWithoutFee": true
         },
         "location": "westus",

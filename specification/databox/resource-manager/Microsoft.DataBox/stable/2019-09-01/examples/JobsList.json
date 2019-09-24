@@ -49,6 +49,9 @@
               "startTime": "2019-01-04T09:08:49.9928621+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -69,6 +72,9 @@
               "startTime": "2019-07-04T14:01:50.9232807+05:30",
               "cancellationReason": "IncorrectOrder null",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -89,6 +95,9 @@
               "startTime": "2019-02-11T12:33:16.6231232+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -109,6 +118,9 @@
               "startTime": "2019-02-11T12:38:49.0620094+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -129,6 +141,9 @@
               "startTime": "2019-01-09T16:12:43.2931373+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -149,6 +164,9 @@
               "startTime": "2019-01-09T15:59:47.4375821+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -169,6 +187,9 @@
               "startTime": "2019-01-09T19:04:31.4461343+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -189,6 +210,9 @@
               "startTime": "2019-01-09T19:10:08.2854968+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -209,6 +233,9 @@
               "startTime": "2018-12-19T14:23:06.8155601+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -229,6 +256,9 @@
               "startTime": "2018-12-19T16:46:12.824436+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -249,6 +279,9 @@
               "startTime": "2019-03-04T12:00:17.7643558+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -269,6 +302,9 @@
               "startTime": "2018-12-19T18:24:23.0774328+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -289,6 +325,9 @@
               "startTime": "2019-03-04T11:58:13.4876698+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -309,6 +348,9 @@
               "startTime": "2019-01-11T14:28:55.4375406+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -329,6 +371,9 @@
               "startTime": "2019-02-15T12:51:12.2717434+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -349,6 +394,9 @@
               "startTime": "2019-02-15T12:54:58.9886188+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -369,6 +417,9 @@
               "startTime": "2019-02-15T13:33:29.8417562+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -389,6 +440,9 @@
               "startTime": "2019-02-15T15:35:39.937519+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -409,6 +463,9 @@
               "startTime": "2019-01-09T15:56:58.4277564+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -429,6 +486,9 @@
               "startTime": "2019-02-10T14:46:10.401621+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -449,6 +509,9 @@
               "startTime": "2019-02-10T14:52:37.2363289+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -468,6 +531,9 @@
               "status": "ReadyToDispatchFromAzureDC",
               "startTime": "2019-02-10T14:57:32.3159255+05:30",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -488,6 +554,9 @@
               "startTime": "2018-09-08T22:46:11.5143859+05:30",
               "cancellationReason": "Old job which is still in ordered state cancelled by the service",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": false
             },
             "location": "westus",
@@ -507,6 +576,9 @@
               "status": "DeviceOrdered",
               "startTime": "2019-07-30T10:47:22.083517+05:30",
               "deliveryType": "NonScheduled",
+              "deliveryInfo": {
+                "scheduledDateTime": "0001-01-01T05:30:00+05:30"
+              },
               "isCancellableWithoutFee": true
             },
             "location": "westus",

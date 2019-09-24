@@ -1099,7 +1099,7 @@
     },
     "CopyLogDetails": {
       "description": "Details for log generated during copy.",
-	  "required": [
+      "required": [
         "copyLogDetailsType"
       ],
       "type": "object",
@@ -1387,7 +1387,12 @@
             "Completed",
             "CompletedWithErrors",
             "Failed",
-            "NotReturned"
+            "NotReturned",
+            "HardwareError",
+            "DeviceFormatted",
+            "DeviceMetadataModified",
+            "StorageAccountNotAccessible",
+            "UnsupportedData"
           ],
           "type": "string",
           "readOnly": true,
@@ -1418,6 +1423,27 @@
               {
                 "value": "NotReturned",
                 "description": "No copy triggered as device was not returned."
+              },
+                },
+              {
+                "value": "HardwareError",
+                "description": "The Device has hit hardware issues."
+              },
+              {
+                "value": "DeviceFormatted",
+                "description": "Data copy failed. The Device was formatted by user."
+              },
+              {
+                "value": "DeviceMetadataModified",
+                "description": "Data copy failed. Device metadata was modified by user."
+              },
+              {
+                "value": "StorageAccountNotAccessible",
+                "description": "Data copy failed. Storage Account was not accessible during copy."
+              },
+              {
+                "value": "UnsupportedData",
+                "description": "Data copy failed. The Device data content is not supported."
               }
             ]
           }
@@ -1791,9 +1817,9 @@
           "type": "string"
         }
       }
-	},
+    },
     "DestinationAccountDetails": {
-      "description": "Details of the destination of the data",
+	  "description": "Details of the destination storage accounts",
       "required": [
         "dataDestinationType"
       ],
@@ -2349,7 +2375,7 @@
     },
     "JobSecrets": {
       "description": "The base class for the secrets",
-	  "required": [
+      "required": [
         "jobSecretsType"
       ],
       "type": "object",
@@ -2714,7 +2740,7 @@
       "type": "object",
       "properties": {
         "preferredDataCenterRegion": {
-		  "description": "Preferred Data Center Region.",
+          "description": "Preferred Data Center Region.",
           "type": "array",
           "items": {
             "type": "string"
@@ -2822,7 +2848,7 @@
         "scheduleAvailabilityRequest": {
           "$ref": "#/definitions/ScheduleAvailabilityRequest",
           "description": "Request body to get the availability for scheduling orders."
-	},
+    },
         "transportAvailabilityRequest": {
           "$ref": "#/definitions/TransportAvailabilityRequest",
           "description": "Request body to get the transport availability for given sku."
@@ -2836,8 +2862,8 @@
         "scheduleAvailabilityResponse": {
           "$ref": "#/definitions/ScheduleAvailabilityResponse",
           "description": "Schedule availability response",
-	  "readOnly": true
-	},
+      "readOnly": true
+    },
         "transportAvailabilityResponse": {
           "$ref": "#/definitions/TransportAvailabilityResponse",
           "description": "Transport options available for given sku in a region.",
@@ -3709,13 +3735,13 @@
     },
     "ValidationInputRequest": {
       "description": "Minimum fields that must be present in any type of validation request.",
-	  "required": [
+      "required": [
         "validationType"
       ],
       "type": "object",
       "properties": {
         "validationType": {
-	    "description": "Identifies the type of validation request.",
+        "description": "Identifies the type of validation request.",
           "enum": [
             "ValidateAddress",
             "ValidateDataDestinationDetails",
@@ -3725,7 +3751,6 @@
             "ValidateSkuAvailability"
           ],
           "type": "string",
-          "readOnly": true,
           "x-ms-enum": {
             "name": "ValidationInputDiscriminator",
             "modelAsExtensible": true,
@@ -3763,7 +3788,7 @@
     "ValidationInputResponse": {
       "description": "Minimum properties that should be present in each individual validation response.",
       "type": "object",
-	  "required": [
+      "required": [
         "validationType"
       ],
       "properties": {
@@ -3852,6 +3877,21 @@
      }
     },
      "discriminator": "validationCategory"
+    },
+    "CreateJobValidations": {
+      "description": "It does all pre-job creation validations.",
+      "required": [
+        "validationCategory",
+        "individualRequestDetails"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValidationRequest"
+        }
+      ],
+      "properties": {},
+      "x-ms-discriminator-value": "JobCreationValidation"
     },
     "ValidationResponse": {
       "description": "Response of pre job creation validations.",
