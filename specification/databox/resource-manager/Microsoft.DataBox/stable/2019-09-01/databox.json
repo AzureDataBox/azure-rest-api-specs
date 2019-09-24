@@ -822,7 +822,6 @@
         "dataDestinationType": {
           "description": "Data Destination Type.",
           "enum": [
-            "UnknownType",
             "StorageAccount",
             "ManagedDisk"
           ],
@@ -832,10 +831,6 @@
             "name": "DataDestinationType",
             "modelAsExtensible": true,
             "values": [
-              {
-                "value": "UnknownType",
-                "description": "Unknown type."
-              },
               {
                 "value": "StorageAccount",
                 "description": "Storage Accounts ."
@@ -1147,7 +1142,6 @@
         "dataDestinationType": {
           "description": "Data Destination Type.",
           "enum": [
-            "UnknownType",
             "StorageAccount",
             "ManagedDisk"
           ],
@@ -1157,10 +1151,6 @@
             "name": "DataDestinationType",
             "modelAsExtensible": true,
             "values": [
-              {
-                "value": "UnknownType",
-                "description": "Unknown type."
-              },
               {
                 "value": "StorageAccount",
                 "description": "Storage Accounts ."
@@ -1424,7 +1414,6 @@
                 "value": "NotReturned",
                 "description": "No copy triggered as device was not returned."
               },
-                },
               {
                 "value": "HardwareError",
                 "description": "The Device has hit hardware issues."
@@ -1808,18 +1797,21 @@
       "x-ms-discriminator-value": "ValidateDataDestinationDetails"
     },
     "DcAccessSecurityCode": {
+      "description": "Dc Access Security code for device.",
       "type": "object",
       "properties": {
-        "forwardDCAccessCode": {
+        "forwardDcAccessCode": {
+        "description": "Dc Access Code for dispatching from DC.",
         "type": "string"
         },
-        "reverseDCAccessCode": {
+        "reverseDcAccessCode": {
+          "description": "Dc Access code for dropping off at DC.",
           "type": "string"
         }
       }
     },
     "DestinationAccountDetails": {
-	  "description": "Details of the destination storage accounts",
+      "description": "Details of the destination storage accounts.",
       "required": [
         "dataDestinationType"
       ],
@@ -1828,7 +1820,6 @@
         "dataDestinationType": {
           "description": "Data Destination Type.",
           "enum": [
-            "UnknownType",
             "StorageAccount",
             "ManagedDisk"
           ],
@@ -1837,10 +1828,6 @@
             "name": "DataDestinationType",
             "modelAsExtensible": true,
             "values": [
-              {
-                "value": "UnknownType",
-                "description": "Unknown type."
-              },
               {
                 "value": "StorageAccount",
                 "description": "Storage Accounts ."
@@ -1909,7 +1896,7 @@
       "x-ms-discriminator-value": "StorageAccount"
     },
     "DestinationToServiceLocationMap": {
-      "description": "Map of destination location to service location",
+      "description": "Map of destination location to service location.",
       "type": "object",
       "properties": {
         "destinationLocation": {
@@ -2840,15 +2827,12 @@
     },
     "RegionConfigurationRequest": {
       "description": "Request body to get the configuration for the region.",
-      "required": [
-        "scheduleAvailabilityRequest"
-      ],
       "type": "object",
       "properties": {
         "scheduleAvailabilityRequest": {
           "$ref": "#/definitions/ScheduleAvailabilityRequest",
           "description": "Request body to get the availability for scheduling orders."
-    },
+        },
         "transportAvailabilityRequest": {
           "$ref": "#/definitions/TransportAvailabilityRequest",
           "description": "Request body to get the transport availability for given sku."
