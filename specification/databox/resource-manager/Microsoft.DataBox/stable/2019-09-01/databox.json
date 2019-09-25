@@ -39,6 +39,12 @@
             "schema": {
               "$ref": "#/definitions/OperationList"
             }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-pageable": {
@@ -84,6 +90,12 @@
             "description": "List of jobs available under the subscription.",
             "schema": {
               "$ref": "#/definitions/JobResourceList"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
             }
           }
         },
@@ -135,6 +147,12 @@
             "description": "The list of available skus under subscription.",
             "schema": {
               "$ref": "#/definitions/AvailableSkusResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
             }
           }
         },
@@ -190,6 +208,12 @@
             "schema": {
               "$ref": "#/definitions/AvailableSkusResult"
             }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-pageable": {
@@ -207,7 +231,7 @@
         "tags": [
           "Service"
         ],
-        "description": "This method validates the customer shipping address and provide alternate addresses if any.",
+        "description": "[DEPRECATED NOTICE: This operation will soon be removed] This method validates the customer shipping address and provide alternate addresses if any.",
         "operationId": "Service_ValidateAddress",
         "consumes": [
           "application/json"
@@ -240,6 +264,12 @@
             "description": "The valid and alternate addresses.",
             "schema": {
               "$ref": "#/definitions/AddressValidationOutput"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
             }
           }
         },
@@ -293,6 +323,12 @@
             "schema": {
               "$ref": "#/definitions/ValidationResponse"
             }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-examples": {
@@ -341,6 +377,12 @@
             "schema": {
               "$ref": "#/definitions/ValidationResponse"
             }
+          },
+         "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-examples": {
@@ -386,6 +428,12 @@
             "description": "List of jobs by resource group.",
             "schema": {
               "$ref": "#/definitions/JobResourceList"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
             }
           }
         },
@@ -438,6 +486,12 @@
             "description": "Job object.",
             "schema": {
               "$ref": "#/definitions/JobResource"
+            }
+          },
+         "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
             }
           }
         },
@@ -506,6 +560,12 @@
           },
           "202": {
             "description": "Accepted request for create Job."
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-long-running-operation": true,
@@ -547,6 +607,12 @@
           },
           "204": {
             "description": "Job deleted."
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-long-running-operation": true,
@@ -606,6 +672,12 @@
           },
           "202": {
             "description": "Accepted request for job updated."
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-long-running-operation": true,
@@ -658,6 +730,12 @@
             "schema": {
               "$ref": "#/definitions/ShipmentPickUpResponse"
             }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-examples": {
@@ -706,6 +784,12 @@
         "responses": {
           "204": {
             "description": "Job cancelled."
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
           }
         },
         "x-ms-examples": {
@@ -747,6 +831,12 @@
             "description": "List of unencrypted credentials of the job.",
             "schema": {
               "$ref": "#/definitions/UnencryptedCredentialsList"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
             }
           }
         },
@@ -798,6 +888,12 @@
             "description": "Region configuration response.",
             "schema": {
               "$ref": "#/definitions/RegionConfigurationResponse"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
             }
           }
         },
@@ -3969,6 +4065,33 @@
             "$ref": "#/definitions/ValidationInputResponse"
           },
           "readOnly": true
+        }
+      }
+    },
+     "CloudError": {
+      "description": "The error information object.",
+      "x-ms-external": true,
+      "properties": {
+        "code": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Error code string."
+        },
+        "message": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Descriptive error information."
+        },
+        "target": {
+          "type": "string",
+          "description": "Error target"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CloudError"
+          },
+          "description": "More detailed error information."
         }
       }
     }
