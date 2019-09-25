@@ -871,6 +871,9 @@
     },
     "AddressValidationProperties": {
       "description": "The address validation output.",
+       "required": [
+        "validationType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1107,7 +1110,6 @@
             "DataBoxHeavy"
           ],
           "type": "string",
-          "readOnly": true,
           "x-ms-enum": {
             "name": "ClassDiscriminator",
             "modelAsExtensible": false,
@@ -1220,7 +1222,8 @@
     "CreateOrderLimitForSubscriptionValidationRequest": {
       "description": "Request to validate create order limit for current subscription.",
       "required": [
-        "deviceType"
+        "deviceType",
+        "validationType"
       ],
       "type": "object",
       "allOf": [
@@ -1261,6 +1264,9 @@
     },
     "CreateOrderLimitForSubscriptionValidationResponseProperties": {
       "description": "Properties of create order limit for subscription validation response.",
+      "required": [
+        "validationType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1301,6 +1307,9 @@
     },
     "DataBoxAccountCopyLogDetails": {
       "description": "Copy log details for a storage account of a DataBox job",
+      "required": [
+        "copyLogDetailsType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1323,6 +1332,9 @@
     },
     "DataBoxDiskCopyLogDetails": {
       "description": "Copy Log Details for a disk",
+      "required": [
+        "copyLogDetailsType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1488,6 +1500,9 @@
     },
     "DataBoxDiskJobSecrets": {
       "description": "The secrets related to disk job.",
+       "required": [
+        "jobSecretsType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1518,6 +1533,9 @@
     },
     "DataBoxHeavyAccountCopyLogDetails": {
       "description": "Copy log details for a storage account for Databox heavy",
+      "required": [
+        "copyLogDetailsType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1573,6 +1591,9 @@
     },
     "DataBoxHeavyJobSecrets": {
       "description": "The secrets related to a databox heavy job.",
+      "required": [
+        "jobSecretsType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1660,6 +1681,9 @@
     },
     "DataboxJobSecrets": {
       "description": "The secrets related to a databox job.",
+      "required": [
+        "jobSecretsType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -1733,7 +1757,8 @@
       "description": "Request to validate data destination details.",
       "required": [
         "destinationAccountDetails",
-        "location"
+        "location",
+        "validationType"
       ],
       "type": "object",
       "allOf": [
@@ -1758,6 +1783,9 @@
     },
     "DataDestinationDetailsValidationResponseProperties": {
       "description": "Properties of data destination details validation response.",
+      "required": [
+        "validationType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -2375,7 +2403,6 @@
             "DataBoxHeavy"
           ],
           "type": "string",
-          "readOnly": true,
           "x-ms-enum": {
             "name": "ClassDiscriminator",
             "modelAsExtensible": false,
@@ -2742,7 +2769,8 @@
     "PreferencesValidationRequest": {
       "description": "Request to validate preference of transport and data center.",
       "required": [
-        "deviceType"
+        "deviceType",
+        "validationType"
       ],
       "type": "object",
       "allOf": [
@@ -2787,6 +2815,9 @@
     },
     "PreferencesValidationResponseProperties": {
       "description": "Properties of data center and transport preference validation response.",
+      "required": [
+        "validationType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -2845,9 +2876,9 @@
       "properties": {
         "scheduleAvailabilityResponse": {
           "$ref": "#/definitions/ScheduleAvailabilityResponse",
-          "description": "Schedule availability response",
-      "readOnly": true
-    },
+          "description": "Schedule availability for given sku in a region.",
+          "readOnly": true
+      },
         "transportAvailabilityResponse": {
           "$ref": "#/definitions/TransportAvailabilityResponse",
           "description": "Transport options available for given sku in a region.",
@@ -2928,7 +2959,7 @@
       "discriminator": "skuName"
     },
     "ScheduleAvailabilityResponse": {
-      "description": "Schedule availability response",
+      "description": "Schedule availability response for given sku in a region.",
       "type": "object",
       "properties": {
         "availableDates": {
@@ -3198,7 +3229,8 @@
         "deviceType",
         "transferType",
         "country",
-        "location"
+        "location",
+        "validationType"
       ],
       "type": "object",
       "allOf": [
@@ -3264,6 +3296,9 @@
     },
     "SkuAvailabilityValidationResponseProperties": {
       "description": "Properties of sku availability validation response.",
+      "required": [
+        "validationType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -3446,6 +3481,9 @@
     },
     "SubscriptionIsAllowedToCreateJobValidationRequest": {
       "description": "Request to validate subscription permission to create jobs.",
+      "required": [
+        "validationType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -3457,6 +3495,9 @@
     },
     "SubscriptionIsAllowedToCreateJobValidationResponseProperties": {
       "description": "Properties of subscription permission to create job validation response.",
+      "required": [
+        "validationType"
+      ],
       "type": "object",
       "allOf": [
         {
@@ -3586,7 +3627,7 @@
           ],
           "type": "string",
           "x-ms-enum": {
-            "name": "TransportPreferenceType",
+            "name": "TransportShipmentTypes",
             "modelAsExtensible": true,
             "values": [
               {
@@ -3670,7 +3711,8 @@
       "description": "The requirements to validate customer address where the device needs to be shipped.",
       "required": [
         "shippingAddress",
-        "deviceType"
+        "deviceType",
+        "validationType"
       ],
       "type": "object",
       "allOf": [
@@ -3787,7 +3829,6 @@
             "ValidateSkuAvailability"
           ],
           "type": "string",
-          "readOnly": true,
           "x-ms-enum": {
             "name": "ValidationInputDiscriminator",
             "modelAsExtensible": true,
