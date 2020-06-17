@@ -109,6 +109,117 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/listCredentials": {
+      "post": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "This method gets the unencrypted secrets related to the job.",
+        "operationId": "Jobs_ListCredentials",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/jobNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of unencrypted credentials of the job.",
+            "schema": {
+              "$ref": "#/definitions/UnencryptedCredentialsList"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "x-ms-examples": {
+          "JobsListCredentials": {
+            "$ref": "./examples/JobsListSecrets.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "description": "This method provides the list of available skus for the given subscription, resource group and location.",
+        "operationId": "Service_ListAvailableSkusByResourceGroup",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/locationParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "availableSkuRequest",
+            "in": "body",
+            "description": "Filters for showing the available skus.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AvailableSkuRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of available skus under Resource group.",
+            "schema": {
+              "$ref": "#/definitions/AvailableSkusResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "ServiceListAvailableSkusByResourceGroup": {
+            "$ref": "./examples/AvailableSkusPostByResourceGroup.json"
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration": {
       "post": {
         "tags": [
@@ -2829,41 +2940,6 @@
       },
       "x-ms-discriminator-value": "ManagedDisk"
     },
-    "MoveResourceResponse": {
-      "description": "Response of move resource.",
-      "type": "object",
-      "properties": {
-        "properties": {
-          "description": "Response properties of move resource.",
-          "$ref": "#/definitions/MoveResourceResponseProperties",
-          "x-ms-client-flatten": true
-        }
-      }
-    },
-    "MoveResourceResponseProperties": {
-      "description": "Response properties of move resource.",
-      "type": "object",
-      "properties": {
-        "updatedResourceId": {
-          "description": "Updated resource ID of move resource.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "MoveResourceValidationResponse": {
-      "description": "Response of move resource validation.",
-      "type": "object",
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/CloudError",
-          "description": "Error code and message of validation response.",
-          "readOnly": true
-        }
-      }
-    },
     "NotificationPreference": {
       "description": "Notification preference for a job stage.",
       "required": [
@@ -3265,47 +3341,6 @@
             "type": "string"
           },
           "readOnly": true
-        }
-      }
-    },
-    "ServiceHealthResponse": {
-      "description": "Response of the GetServiceHealth api.",
-      "type": "object",
-      "properties": {
-        "connectorType": {
-          "description": "Name of the connector.",
-          "type": "string"
-        },
-        "startTime": {
-          "format": "date-time",
-          "description": "Time when the action was triggered.",
-          "type": "string"
-        },
-        "endTime": {
-          "format": "date-time",
-          "description": "Time when the action got completed.",
-          "type": "string"
-        },
-        "status": {
-          "description": "Status of the service.",
-          "type": "boolean"
-        }
-      }
-    },
-    "ServiceHealthResponseList": {
-      "description": "List of service health response.",
-      "type": "object",
-      "properties": {
-        "dependencies": {
-          "description": "List of ServiceHealthResponse.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ServiceHealthResponse"
-          }
-        },
-        "serviceVersion": {
-          "description": "Version of the service.",
-          "type": "string"
         }
       }
     },
