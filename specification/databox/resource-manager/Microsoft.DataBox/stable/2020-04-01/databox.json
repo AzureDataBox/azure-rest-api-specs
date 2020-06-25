@@ -3278,7 +3278,7 @@
       "properties": {
         "scheduleAvailabilityResponse": {
           "$ref": "#/definitions/ScheduleAvailabilityResponse",
-          "description": "Schedule availability response",
+          "description": "Schedule availability for given sku in a region.",
           "readOnly": true
         },
         "transportAvailabilityResponse": {
@@ -3873,8 +3873,7 @@
             "Region",
             "Feature",
             "OfferType",
-            "NoSubscriptionInfo",
-            "CustomerUnregistered"
+            "NoSubscriptionInfo"
           ],
           "type": "string",
           "readOnly": true,
@@ -3905,10 +3904,6 @@
               {
                 "value": "NoSubscriptionInfo",
                 "description": "Subscription has not registered to Microsoft.DataBox and Service does not have the subscription notification."
-              },
-              {
-                "value": "CustomerUnregistered",
-                "description": "Customer unregistered from the subscription."
               }
             ]
           }
