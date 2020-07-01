@@ -3257,9 +3257,6 @@
     },
     "RegionConfigurationRequest": {
       "description": "Request body to get the configuration for the region.",
-      "required": [
-        "scheduleAvailabilityRequest"
-      ],
       "type": "object",
       "properties": {
         "scheduleAvailabilityRequest": {
