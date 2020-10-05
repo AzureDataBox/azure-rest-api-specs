@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2020-04-01",
+    "version": "2020-10-01",
     "title": "DataBoxManagementClient"
   },
   "host": "management.azure.com",
@@ -3669,8 +3669,7 @@
       "description": "Shipping address where customer wishes to receive the device.",
       "required": [
         "streetAddress1",
-        "country",
-        "postalCode"
+        "country"
       ],
       "type": "object",
       "properties": {
