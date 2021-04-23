@@ -3428,6 +3428,19 @@
       },
       "x-ms-discriminator-value": "ManagedDisk"
     },
+	"MarkDevicesShippedRequest": {
+      "description": "The request body to provide the delivery package details of job",
+      "required": [
+        "deliveryPackageDetails"
+      ],
+      "type": "object",
+      "properties": {
+        "deliveryPackageDetails": {
+          "$ref": "#/definitions/PackageCarrierInfo",
+          "description": "Delivery package details"
+        }
+      }
+    },
     "LastMitigationActionOnJob": {
       "description": "Last Mitigation Action Performed On Job",
       "type": "object",
