@@ -51,8 +51,8 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-          "OperationsList": {
-            "$ref": "./examples/OperationsList.json"
+          "OperationsGet": {
+            "$ref": "./examples/OperationsGet.json"
           }
         }
       }
@@ -109,13 +109,13 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/mitigate": {
       "post": {
         "tags": [
-          "Service"
+          "Jobs"
         ],
-        "description": "This API provides configuration details specific to given region/location at Subscription level.",
-        "operationId": "Service_RegionConfiguration",
+        "description": "Request to mitigate for a given job",
+        "operationId": "Mitigate",
         "consumes": [
           "application/json"
         ],
@@ -124,30 +124,30 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/jobNameParameter"
+          },
+          {
             "$ref": "#/parameters/subscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/locationParameter"
+            "$ref": "#/parameters/resourceGroupNameParameter"
           },
           {
             "$ref": "#/parameters/apiVersionParameter"
           },
           {
-            "name": "regionConfigurationRequest",
+            "name": "mitigateJobRequest",
             "in": "body",
-            "description": "Request body to get the configuration for the region.",
+            "description": "Mitigation Request",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/RegionConfigurationRequest"
+              "$ref": "#/definitions/MitigateJobRequest"
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "Region configuration response.",
-            "schema": {
-              "$ref": "#/definitions/RegionConfigurationResponse"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "description": "Error response describing reason for operation failure.",
@@ -157,19 +157,73 @@
           }
         },
         "x-ms-examples": {
-          "ServiceRegionConfiguration": {
-            "$ref": "./examples/ServiceRegionConfiguration.json"
+          "Mitigate": {
+            "$ref": "./examples/JobMitigate.json"
           }
         }
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/serviceHealth": {
-      "get": {
+	"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/markDevicesShipped": {
+      "post": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Request to mark devices for a given job as shipped",
+        "operationId": "MarkDevicesShipped",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/jobNameParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "markDevicesShippedRequest",
+            "in": "body",
+            "description": "Mark Devices Shipped Request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MarkDevicesShippedRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "MarkDevicesShipped": {
+            "$ref": "./examples/MarkDevicesShipped.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus": {
+      "post": {
         "tags": [
           "Service"
         ],
-        "description": "This method returns the health of partner services.",
-        "operationId": "Service_GetHealth",
+        "description": "This method provides the list of available skus for the given subscription, resource group and location.",
+        "operationId": "Service_ListAvailableSkusByResourceGroup",
         "consumes": [
           "application/json"
         ],
@@ -181,17 +235,29 @@
             "$ref": "#/parameters/subscriptionIdParameter"
           },
           {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
             "$ref": "#/parameters/locationParameter"
           },
           {
             "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "availableSkuRequest",
+            "in": "body",
+            "description": "Filters for showing the available skus.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AvailableSkuRequest"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "The service health response.",
+            "description": "The list of available skus under Resource group.",
             "schema": {
-              "$ref": "#/definitions/ServiceHealthResponseList"
+              "$ref": "#/definitions/AvailableSkusResult"
             }
           },
           "default": {
@@ -201,9 +267,12 @@
             }
           }
         },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
         "x-ms-examples": {
-          "ServiceGetHealth": {
-            "$ref": "./examples/ServiceGetHealth.json"
+          "AvailableSkusPost": {
+            "$ref": "./examples/AvailableSkusPost.json"
           }
         }
       }
@@ -257,8 +326,65 @@
         },
         "deprecated": true,
         "x-ms-examples": {
-          "ServiceValidateAddress": {
-            "$ref": "./examples/ServiceValidateAddress.json"
+          "ValidateAddressPost": {
+            "$ref": "./examples/ValidateAddressPost.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/validateInputs": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "description": "This method does all necessary pre-job creation validation under resource group.",
+        "operationId": "Service_ValidateInputsByResourceGroup",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/locationParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "validationRequest",
+            "in": "body",
+            "description": "Inputs of the customer.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValidationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The validation status and responses of each validating parameter.",
+            "schema": {
+              "$ref": "#/definitions/ValidationResponse"
+            }
+          },
+          "default": {
+            "description": "Error response describing reason for operation failure.",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ValidateInputsByResourceGroup": {
+            "$ref": "./examples/ValidateInputsByResourceGroup.json"
           }
         }
       }
@@ -311,50 +437,8 @@
           }
         },
         "x-ms-examples": {
-          "ServiceValidateInputs": {
-            "$ref": "./examples/ServiceValidateInputs.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/unregister": {
-      "post": {
-        "tags": [
-          "Service"
-        ],
-        "description": "Un-registers Provider",
-        "operationId": "Service_UnRegisterProvider",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/parameters/subscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/apiVersionParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "default": {
-            "description": "Error response describing reason for operation failure.",
-            "schema": {
-              "$ref": "#/definitions/ApiError"
-            }
-          }
-        },
-        "x-ms-examples": {
-          "ServiceUnRegisterProvider": {
-            "$ref": "./examples/ServiceUnRegisterProvider.json"
+          "ValidateInputs": {
+            "$ref": "./examples/ValidateInputs.json"
           }
         }
       }
@@ -462,10 +546,18 @@
             }
           }
         },
-        "x-ms-odata": "#/definitions/JobDetails",
         "x-ms-examples": {
           "JobsGet": {
             "$ref": "./examples/JobsGet.json"
+          },
+          "JobsGetCmk": {
+            "$ref": "./examples/JobsGetCmk.json"
+          },
+          "JobsGetExport": {
+            "$ref": "./examples/JobsGetExport.json"
+          },
+          "JobsGetCopyStuck": {
+            "$ref": "./examples/JobsGetCopyStuck.json"
           }
         }
       },
@@ -525,6 +617,18 @@
         "x-ms-examples": {
           "JobsCreate": {
             "$ref": "./examples/JobsCreate.json"
+          },
+          "JobsCreateDevicePassword": {
+            "$ref": "./examples/JobsCreateDevicePassword.json"
+          },
+          "JobsCreateExport": {
+            "$ref": "./examples/JobsCreateExport.json"
+          },
+          "JobsCreateDoubleEncryption": {
+            "$ref": "./examples/JobsCreateDoubleEncryption.json"
+          },
+          "JobsCreateWithUserAssignedIdentity": {
+            "$ref": "./examples/JobsCreateWithUserAssignedIdentity.json"
           }
         }
       },
@@ -638,8 +742,14 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-          "JobsUpdate": {
-            "$ref": "./examples/JobsUpdate.json"
+          "JobsPatch": {
+            "$ref": "./examples/JobsPatch.json"
+          },
+          "JobsPatchCmk": {
+            "$ref": "./examples/JobsPatchCmk.json"
+          },
+          "JobsPatchSystemAssignedToUserAssigned": {
+            "$ref": "./examples/JobsPatchSystemAssignedToUserAssigned.json"
           }
         }
       }
@@ -695,8 +805,8 @@
           }
         },
         "x-ms-examples": {
-          "JobsBookShipmentPickUp": {
-            "$ref": "./examples/JobsBookShipmentPickUp.json"
+          "BookShipmentPickupPost": {
+            "$ref": "./examples/BookShipmentPickupPost.json"
           }
         }
       }
@@ -749,8 +859,8 @@
           }
         },
         "x-ms-examples": {
-          "JobsCancel": {
-            "$ref": "./examples/JobsCancel.json"
+          "JobsCancelPost": {
+            "$ref": "./examples/JobsCancelPost.json"
           }
         }
       }
@@ -806,129 +916,13 @@
         }
       }
     },
-	"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/markDevicesShipped": {
-      "post": {
-        "tags": [
-          "Jobs"
-        ],
-        "description": "Request to mark devices for a given job as shipped",
-        "operationId": "MarkDevicesShipped",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "required": false,
-            "$ref": "#/parameters/jobNameParameter"
-          },
-          {
-            "required": false,
-            "$ref": "#/parameters/subscriptionIdParameter"
-          },
-          {
-            "required": false,
-            "$ref": "#/parameters/resourceGroupNameParameter"
-          },
-          {
-            "required": false,
-            "$ref": "#/parameters/apiVersionParameter"
-          },
-          {
-            "name": "markDevicesShippedRequest",
-            "in": "body",
-            "description": "Mark Devices Shipped Request",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/MarkDevicesShippedRequest"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "description": "Error response describing reason for operation failure.",
-            "schema": {
-              "$ref": "#/definitions/ApiError"
-            }
-          }
-        },
-        "x-ms-examples": {
-          "MarkDevicesShipped": {
-            "$ref": "./examples/MarkDevicesShipped.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/mitigate": {
-      "post": {
-        "tags": [
-          "Jobs"
-        ],
-        "description": "Request to mitigate for a given job",
-        "operationId": "Mitigate",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "required": false,
-            "$ref": "#/parameters/jobNameParameter"
-          },
-          {
-            "required": false,
-            "$ref": "#/parameters/subscriptionIdParameter"
-          },
-          {
-            "required": false,
-            "$ref": "#/parameters/resourceGroupNameParameter"
-          },
-          {
-            "required": false,
-            "$ref": "#/parameters/apiVersionParameter"
-          },
-          {
-            "name": "mitigateJobRequest",
-            "in": "body",
-            "description": "Mitigation Request",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/MitigateJobRequest"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "description": "Error response describing reason for operation failure.",
-            "schema": {
-              "$ref": "#/definitions/ApiError"
-            }
-          }
-        },
-        "x-ms-examples": {
-          "Mitigate": {
-            "$ref": "./examples/Mitigate.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration": {
       "post": {
         "tags": [
           "Service"
         ],
-        "description": "This method provides the list of available skus for the given subscription, resource group and location.",
-        "operationId": "Service_ListAvailableSkusByResourceGroup",
+        "description": "This API provides configuration details specific to given region/location at Subscription level.",
+        "operationId": "Service_RegionConfiguration",
         "consumes": [
           "application/json"
         ],
@@ -938,9 +932,6 @@
         "parameters": [
           {
             "$ref": "#/parameters/subscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/resourceGroupNameParameter"
           },
           {
             "$ref": "#/parameters/locationParameter"
@@ -949,20 +940,20 @@
             "$ref": "#/parameters/apiVersionParameter"
           },
           {
-            "name": "availableSkuRequest",
+            "name": "regionConfigurationRequest",
             "in": "body",
-            "description": "Filters for showing the available skus.",
+            "description": "Request body to get the configuration for the region.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AvailableSkuRequest"
+              "$ref": "#/definitions/RegionConfigurationRequest"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "The list of available skus under Resource group.",
+            "description": "Region configuration response.",
             "schema": {
-              "$ref": "#/definitions/AvailableSkusResult"
+              "$ref": "#/definitions/RegionConfigurationResponse"
             }
           },
           "default": {
@@ -972,12 +963,9 @@
             }
           }
         },
-        "x-ms-pageable": {
-          "nextLinkName": "nextLink"
-        },
         "x-ms-examples": {
-          "ServiceListAvailableSkusByResourceGroup": {
-            "$ref": "./examples/ServiceListAvailableSkusByResourceGroup.json"
+          "RegionConfiguration": {
+            "$ref": "./examples/RegionConfiguration.json"
           }
         }
       }
@@ -1033,65 +1021,8 @@
           }
         },
         "x-ms-examples": {
-          "ServiceRegionConfigurationByResourceGroup": {
-            "$ref": "./examples/ServiceRegionConfigurationByResourceGroup.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/validateInputs": {
-      "post": {
-        "tags": [
-          "Service"
-        ],
-        "description": "This method does all necessary pre-job creation validation under resource group.",
-        "operationId": "Service_ValidateInputsByResourceGroup",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/parameters/subscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/resourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/locationParameter"
-          },
-          {
-            "$ref": "#/parameters/apiVersionParameter"
-          },
-          {
-            "name": "validationRequest",
-            "in": "body",
-            "description": "Inputs of the customer.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ValidationRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The validation status and responses of each validating parameter.",
-            "schema": {
-              "$ref": "#/definitions/ValidationResponse"
-            }
-          },
-          "default": {
-            "description": "Error response describing reason for operation failure.",
-            "schema": {
-              "$ref": "#/definitions/ApiError"
-            }
-          }
-        },
-        "x-ms-examples": {
-          "ServiceValidateInputsByResourceGroup": {
-            "$ref": "./examples/ServiceValidateInputsByResourceGroup.json"
+          "RegionConfigurationByResourceGroup": {
+            "$ref": "./examples/RegionConfigurationByResourceGroup.json"
           }
         }
       }
@@ -1147,11 +1078,14 @@
     },
     "AdditionalErrorInfo": {
       "type": "object",
+      "description": "Additional error info.",
       "properties": {
         "type": {
+          "description": "Additional error type.",
           "type": "string"
         },
         "info": {
+          "description": "Additional error info.",
           "type": "object"
         }
       }
@@ -1333,10 +1267,10 @@
                   "value": "DataBoxHeavy",
                   "description": "Data Box Heavy."
                 },
-                {
-                  "value": "DataBoxCustomerDisk",
-                  "description": "Data Box Customer Disk."
-                }
+				{
+				  "value": "DataBoxCustomerDisk",
+                  "description": "Data Box Customer Disk"				  
+				}
               ]
             }
           }
@@ -1429,18 +1363,23 @@
       }
     },
     "CloudError": {
+      "description": "Cloud error.",
       "type": "object",
       "properties": {
         "code": {
+          "description": "Cloud error code.",
           "type": "string"
         },
         "message": {
+          "description": "Cloud error message.",
           "type": "string"
         },
         "target": {
+          "description": "Cloud error target.",
           "type": "string"
         },
         "details": {
+          "description": "Cloud error details.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CloudError"
@@ -1448,6 +1387,7 @@
           "readOnly": true
         },
         "additionalInfo": {
+          "description": "Cloud error additional info.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/AdditionalErrorInfo"
@@ -1511,7 +1451,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -1530,7 +1470,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy orders."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk orders."
               }
@@ -1701,7 +1641,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -1720,7 +1660,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -1877,11 +1817,16 @@
                 "description": "Azure Managed disk storage."
               }
             ]
-          }
+          },
+          "default": "StorageAccount"
         },
         "sharePassword": {
-          "description": "Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have atleast one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\\-$%^!+=;:_()]+",
-          "type": "string"
+          "description": "Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\\-$%^!+=;:_()]+",
+          "type": "string",
+          "x-ms-secret": true,
+          "x-ms-mutability": [
+            "create"
+          ]
         }
       },
       "discriminator": "dataAccountType"
@@ -2170,9 +2115,8 @@
           "readOnly": true
         },
         "devicePassword": {
-          "description": "Set Device password for unlocking Databox Heavy. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have atleast one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\\-$%^!+=;:_()]+",
-          "type": "string",
-          "x-ms-secret": true
+          "description": "Set Device password for unlocking Databox Heavy. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\\-$%^!+=;:_()]+",
+          "type": "string"
         }
       },
       "x-ms-discriminator-value": "DataBoxHeavy"
@@ -2209,8 +2153,7 @@
         "devicePassword": {
           "description": "Password for out of the box experience on device.",
           "type": "string",
-          "readOnly": true,
-          "x-ms-secret": true
+          "readOnly": true
         },
         "networkConfigurations": {
           "description": "Network configuration of the appliance.",
@@ -2257,9 +2200,8 @@
           "readOnly": true
         },
         "devicePassword": {
-          "description": "Set Device password for unlocking Databox. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have atleast one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\\-$%^!+=;:_()]+",
-          "type": "string",
-          "x-ms-secret": true
+          "description": "Set Device password for unlocking Databox. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\\-$%^!+=;:_()]+",
+          "type": "string"
         }
       },
       "x-ms-discriminator-value": "DataBox"
@@ -2310,8 +2252,7 @@
         "devicePassword": {
           "description": "Password for out of the box experience on device.",
           "type": "string",
-          "readOnly": true,
-          "x-ms-secret": true
+          "readOnly": true
         },
         "networkConfigurations": {
           "description": "Network configuration of the appliance.",
@@ -2368,7 +2309,8 @@
                 "description": "Verbose logging (includes Errors, CRC, size information and others)."
               }
             ]
-          }
+          },
+          "default": "Error"
         },
         "accountDetails": {
           "$ref": "#/definitions/DataAccountDetails",
@@ -2439,7 +2381,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -2458,7 +2400,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -2534,12 +2476,15 @@
       "x-ms-discriminator-value": "ValidateDataTransferDetails"
     },
     "DcAccessSecurityCode": {
+      "description": "Dc access security code",
       "type": "object",
       "properties": {
         "reverseDCAccessCode": {
+          "description": "Reverse Dc access security code.",
           "type": "string"
         },
         "forwardDCAccessCode": {
+          "description": "Forward Dc access security code.",
           "type": "string"
         }
       }
@@ -2575,7 +2520,7 @@
       "properties": {
         "expectedDataSizeInTeraBytes": {
           "format": "int32",
-          "description": "The expected size of the data, which needs to be transferred in this job, in tera bytes.",
+          "description": "The expected size of the data, which needs to be transferred in this job, in terabytes.",
           "type": "integer"
         }
       },
@@ -2685,7 +2630,7 @@
             "values": [
               {
                 "value": "AzureBlob",
-                "description": "Filter file is of the type Azureblobs."
+                "description": "Filter file is of the type AzureBlob."
               },
               {
                 "value": "AzureFile",
@@ -2818,7 +2763,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -2837,7 +2782,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy orders."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk orders."
               }
@@ -2872,10 +2817,10 @@
         },
         "expectedDataSizeInTeraBytes": {
           "format": "int32",
-          "description": "The expected size of the data, which needs to be transfered in this job, in tera bytes.",
+          "description": "The expected size of the data, which needs to be transferred in this job, in terabytes.",
           "type": "integer"
         },
-		"actions": {
+        "actions": {
           "description": "Available actions on the job.",
           "uniqueItems": false,
           "type": "array",
@@ -2905,25 +2850,7 @@
               ]
             }
           },
-          "readOnly": true,
-          "x-ms-enum": {
-            "name": "CustomerResolutionCode",
-            "modelAsExtensible": true,
-            "values": [
-              {
-                "value": "None",
-                "description": "No Resolution Yet"
-              },
-              {
-                "value": "MoveToCleanUpDevice",
-                "description": "Clean the device"
-              },
-              {
-                "value": "Resume",
-                "description": "Resume the job to same stage"
-              }
-            ]
-          }
+          "readOnly": true
         },
         "lastMitigationActionOnJob": {
           "$ref": "#/definitions/LastMitigationActionOnJob",
@@ -3061,9 +2988,6 @@
                 "description": "Order has been aborted."
               },
               {
-                "value": "Current"
-              },
-              {
                 "value": "CompletedWithWarnings",
                 "description": "Order has completed with warnings."
               },
@@ -3074,18 +2998,6 @@
               {
                 "value": "ReadyToReceiveAtAzureDC",
                 "description": "Device can be dropped off at Azure DC."
-              },
-              {
-                "value": "Created",
-                "description": "Job created by the customer."
-              },
-              {
-                "value": "Shipping",
-                "description": "User shipping the device to AzureDC"
-              },
-              {
-                "value": "Packaging",
-                "description": "Packaging the device to return to customer"
               }
             ]
           }
@@ -3161,11 +3073,6 @@
           "description": "Properties of a job.",
           "x-ms-client-flatten": true
         },
-        "systemData": {
-          "$ref": "../../../../common-types/resource-management/v2/types.json#/definitions/SystemData",
-          "description": "Represents resource creation and updation time",
-          "readOnly": true
-        },
         "name": {
           "description": "Name of the object.",
           "type": "string",
@@ -3179,6 +3086,11 @@
         "type": {
           "description": "Type of the object.",
           "type": "string",
+          "readOnly": true
+        },
+        "systemData": {
+          "$ref": "#/definitions/systemData",
+          "description": "Metadata pertaining to creation and last modification of the resource.",
           "readOnly": true
         }
       }
@@ -3224,6 +3136,9 @@
     },
     "JobSecrets": {
       "description": "The base class for the secrets",
+      "required": [
+        "jobSecretsType"
+      ],
       "type": "object",
       "properties": {
         "jobSecretsType": {
@@ -3232,7 +3147,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -3251,8 +3166,8 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy orders."
               },
-              {
-                "value": "DataBoxCustomerDisk",
+			  {
+                "value": "DataBoxHeavy",
                 "description": "Data Box Customer Disk orders."
               }
             ]
@@ -3354,9 +3269,6 @@
                 "description": "Order has been aborted."
               },
               {
-                "value": "Current"
-              },
-              {
                 "value": "CompletedWithWarnings",
                 "description": "Order has completed with warnings."
               },
@@ -3367,18 +3279,6 @@
               {
                 "value": "ReadyToReceiveAtAzureDC",
                 "description": "Device can be dropped off at Azure DC."
-              },
-              {
-                "value": "Created",
-                "description": "Job created by the customer."
-              },
-              {
-                "value": "Shipping",
-                "description": "User shipping the device to AzureDC"
-              },
-              {
-                "value": "Packaging",
-                "description": "Packaging the device to return to customer"
               }
             ]
           }
@@ -3486,7 +3386,8 @@
                 "description": "Key encryption key is managed by the Customer."
               }
             ]
-          }
+          },
+          "default": "MicrosoftManaged"
         },
         "identityProperties": {
           "$ref": "#/definitions/IdentityProperties",
@@ -3502,22 +3403,30 @@
         }
       }
     },
-	"KeyValuePair[String,IEnumerable[String]]": {
+    "ManagedDiskDetails": {
+      "description": "Details of the managed disks.",
+      "required": [
+        "resourceGroupId",
+        "stagingStorageAccountId",
+        "dataAccountType"
+      ],
       "type": "object",
-      "properties": {
-        "key": {
-          "type": "string",
-          "readOnly": true
-        },
-        "value": {
-          "uniqueItems": false,
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "readOnly": true
+      "allOf": [
+        {
+          "$ref": "#/definitions/DataAccountDetails"
         }
-      }
+      ],
+      "properties": {
+        "resourceGroupId": {
+          "description": "Resource Group Id of the compute disks.",
+          "type": "string"
+        },
+        "stagingStorageAccountId": {
+          "description": "Resource Id of the storage account that can be used to copy the vhd for staging.",
+          "type": "string"
+        }
+      },
+      "x-ms-discriminator-value": "ManagedDisk"
     },
     "LastMitigationActionOnJob": {
       "description": "Last Mitigation Action Performed On Job",
@@ -3561,19 +3470,6 @@
         }
       }
     },
-    "MarkDevicesShippedRequest": {
-      "description": "The request body to provide the delivery package details of job",
-      "required": [
-        "deliveryPackageDetails"
-      ],
-      "type": "object",
-      "properties": {
-        "deliveryPackageDetails": {
-          "$ref": "#/definitions/PackageCarrierInfo",
-          "description": "Delivery package details"
-        }
-      }
-    },
     "MitigateJobRequest": {
       "description": "The Mitigate Job captured from request body for Mitigate API",
       "required": [
@@ -3607,64 +3503,6 @@
               }
             ]
           }
-        }
-      }
-	},
-    "ManagedDiskDetails": {
-      "description": "Details of the managed disks.",
-      "required": [
-        "resourceGroupId",
-        "stagingStorageAccountId",
-        "dataAccountType"
-      ],
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/DataAccountDetails"
-        }
-      ],
-      "properties": {
-        "resourceGroupId": {
-          "description": "Resource Group Id of the compute disks.",
-          "type": "string"
-        },
-        "stagingStorageAccountId": {
-          "description": "Resource Id of the storage account that can be used to copy the vhd for staging.",
-          "type": "string"
-        }
-      },
-      "x-ms-discriminator-value": "ManagedDisk"
-    },
-    "MoveResourceResponse": {
-      "description": "Response of move resource.",
-      "type": "object",
-      "properties": {
-        "properties": {
-          "$ref": "#/definitions/MoveResourceResponseProperties",
-          "x-ms-client-flatten": true
-        }
-      }
-    },
-    "MoveResourceResponseProperties": {
-      "description": "Response properties of move resource.",
-      "type": "object",
-      "properties": {
-        "updatedResourceId": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "MoveResourceValidationResponse": {
-      "description": "Response of move resource validation.",
-      "type": "object",
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/CloudError",
-          "description": "Error code and message of validation response.",
-          "readOnly": true
         }
       }
     },
@@ -3716,39 +3554,14 @@
                 "description": "Notification at data copy started stage."
               }
             ]
-          },
-          "sendNotification": {
-            "description": "Notification is required or not.",
-            "type": "boolean"
           }
+        },
+        "sendNotification": {
+          "description": "Notification is required or not.",
+          "type": "boolean",
+          "default": true
         }
-      },
-      "default": [
-        {
-          "stageName": "DevicePrepared",
-          "sendNotification": true
-        },
-        {
-          "stageName": "Delivered",
-          "sendNotification": true
-        },
-        {
-          "stageName": "Dispatched",
-          "sendNotification": true
-        },
-        {
-          "stageName": "PickedUp",
-          "sendNotification": true
-        },
-        {
-          "stageName": "AtAzureDC",
-          "sendNotification": true
-        },
-        {
-          "stageName": "DataCopy",
-          "sendNotification": true
-        }
-      ]
+      }
     },
     "Operation": {
       "description": "Operation entity.",
@@ -3776,9 +3589,8 @@
           "readOnly": true
         },
         "isDataAction": {
-          "description": "Indicates whether the operation is a data action.",
-          "type": "boolean",
-          "readOnly": true
+          "description": "Indicates whether the operation is a data action",
+          "type": "boolean"
         }
       }
     },
@@ -3884,6 +3696,7 @@
       "type": "object",
       "properties": {
         "preferredDataCenterRegion": {
+          "description": "Preferred data center region.",
           "type": "array",
           "items": {
             "type": "string"
@@ -3913,6 +3726,7 @@
       ],
       "properties": {
         "preference": {
+          "description": "Preference of transport and data center.",
           "$ref": "#/definitions/Preferences"
         },
         "deviceType": {
@@ -3921,7 +3735,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -3940,7 +3754,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -4063,7 +3877,8 @@
       "properties": {
         "type": {
           "description": "Identity type",
-          "type": "string"
+          "type": "string",
+          "default": "None"
         },
         "principalId": {
           "description": "Service Principal Id backing the Msi",
@@ -4102,7 +3917,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -4121,7 +3936,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -4147,47 +3962,6 @@
             "type": "string"
           },
           "readOnly": true
-        }
-      }
-    },
-    "ServiceHealthResponse": {
-      "description": "Response of the GetServiceHealth api.",
-      "type": "object",
-      "properties": {
-        "connectorType": {
-          "description": "Name of the connector.",
-          "type": "string"
-        },
-        "startTime": {
-          "format": "date-time",
-          "description": "Time when the action was triggered.",
-          "type": "string"
-        },
-        "endTime": {
-          "format": "date-time",
-          "description": "Time when the action got completed.",
-          "type": "string"
-        },
-        "status": {
-          "description": "Status of the service.",
-          "type": "boolean"
-        }
-      }
-    },
-    "ServiceHealthResponseList": {
-      "description": "List of service health response.",
-      "type": "object",
-      "properties": {
-        "dependencies": {
-          "description": "List of ServiceHealthResponse.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ServiceHealthResponse"
-          }
-        },
-        "serviceVersion": {
-          "description": "Version of the service.",
-          "type": "string"
         }
       }
     },
@@ -4410,7 +4184,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -4429,7 +4203,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -4468,7 +4242,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -4487,7 +4261,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -4795,6 +4569,44 @@
       },
       "x-ms-discriminator-value": "ValidateSubscriptionIsAllowedToCreateJob"
     },
+    "systemData": {
+      "description": "Provides details about resource creation and update time",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "description": "A string identifier for the identity that created the resource",
+          "type": "string",
+          "readOnly": true
+        },
+        "createdByType": {
+          "description": "The type of identity that created the resource: user, application, managedIdentity",
+          "type": "string",
+          "readOnly": true
+        },
+        "createdAt": {
+          "format": "date-time",
+          "description": "The timestamp of resource creation (UTC)",
+          "type": "string",
+          "readOnly": true
+        },
+        "lastModifiedBy": {
+          "description": "A string identifier for the identity that last modified the resource",
+          "type": "string",
+          "readOnly": true
+        },
+        "lastModifiedByType": {
+          "description": "The type of identity that last modified the resource: user, application, managedIdentity",
+          "type": "string",
+          "readOnly": true
+        },
+        "lastModifiedAt": {
+          "format": "date-time",
+          "description": "The timestamp of resource last modification (UTC)",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
     "TransferAllDetails": {
       "description": "Details to transfer all data.",
       "required": [
@@ -4822,7 +4634,8 @@
                 "description": "Azure Managed disk storage."
               }
             ]
-          }
+          },
+          "default": "StorageAccount"
         },
         "transferAllBlobs": {
           "description": "To indicate if all Azure blobs have to be transferred",
@@ -4868,6 +4681,7 @@
           "type": "object",
           "properties": {
             "include": {
+              "description": "Details of the filtering the transfer of data.",
               "$ref": "#/definitions/TransferFilterDetails"
             }
           }
@@ -4877,6 +4691,7 @@
           "type": "object",
           "properties": {
             "include": {
+              "description": "Details to transfer all data.",
               "$ref": "#/definitions/TransferAllDetails"
             }
           }
@@ -4884,7 +4699,7 @@
       }
     },
     "TransferFilterDetails": {
-      "description": "Details of the filtering the transfer of data",
+      "description": "Details of the filtering the transfer of data.",
       "required": [
         "dataAccountType"
       ],
@@ -4910,7 +4725,8 @@
                 "description": "Azure Managed disk storage."
               }
             ]
-          }
+          },
+          "default": "StorageAccount"
         },
         "blobFilterDetails": {
           "$ref": "#/definitions/BlobFilterDetails",
@@ -4968,7 +4784,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -4987,7 +4803,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -5156,7 +4972,7 @@
             "DataBox",
             "DataBoxDisk",
             "DataBoxHeavy",
-            "DataBoxCustomerDisk"
+			"DataBoxCustomerDisk"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -5175,7 +4991,7 @@
                 "value": "DataBoxHeavy",
                 "description": "Data Box Heavy."
               },
-              {
+			  {
                 "value": "DataBoxCustomerDisk",
                 "description": "Data Box Customer Disk."
               }
@@ -5229,7 +5045,7 @@
               },
               {
                 "value": "ValidateSkuAvailability",
-                "description": "Identify request and response of active job limit for sku availibility."
+                "description": "Identify request and response of active job limit for sku availability."
               },
               {
                 "value": "ValidateDataTransferDetails",
@@ -5281,7 +5097,7 @@
               },
               {
                 "value": "ValidateSkuAvailability",
-                "description": "Identify request and response of active job limit for sku availibility."
+                "description": "Identify request and response of active job limit for sku availability."
               },
               {
                 "value": "ValidateDataTransferDetails",
