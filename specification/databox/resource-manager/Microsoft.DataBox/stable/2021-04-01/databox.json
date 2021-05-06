@@ -169,7 +169,7 @@
           "Jobs"
         ],
         "description": "Request to mark devices for a given job as shipped",
-        "operationId": "MarkDevicesShipped",
+        "operationId": "Jobs_MarkDevicesShipped",
         "consumes": [
           "application/json"
         ],
