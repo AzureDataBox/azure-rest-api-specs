@@ -2923,7 +2923,10 @@
             "Aborted",
             "CompletedWithWarnings",
             "ReadyToDispatchFromAzureDC",
-            "ReadyToReceiveAtAzureDC"
+            "ReadyToReceiveAtAzureDC",
+            "Created",
+            "Shipping",
+            "Packaging"
           ],
           "type": "string",
           "readOnly": true,
@@ -2994,6 +2997,18 @@
               {
                 "value": "ReadyToReceiveAtAzureDC",
                 "description": "Device can be dropped off at Azure DC."
+              },
+              {
+                "value": "Created",
+                "description": "Job created by the customer."
+              },
+              {
+                "value": "Shipping",
+                "description": "User shipping the device to AzureDC"
+              },
+              {
+                "value": "Packaging",
+                "description": "Packaging the device to return to customer"
               }
             ]
           }
@@ -3204,7 +3219,10 @@
             "Aborted",
             "CompletedWithWarnings",
             "ReadyToDispatchFromAzureDC",
-            "ReadyToReceiveAtAzureDC"
+            "ReadyToReceiveAtAzureDC",
+            "Created",
+            "Shipping",
+            "Packaging"
           ],
           "type": "string",
           "readOnly": true,
@@ -3275,6 +3293,18 @@
               {
                 "value": "ReadyToReceiveAtAzureDC",
                 "description": "Device can be dropped off at Azure DC."
+              },
+              {
+                "value": "Created",
+                "description": "Job created by the customer."
+              },
+              {
+                "value": "Shipping",
+                "description": "User shipping the device to AzureDC"
+              },
+              {
+                "value": "Packaging",
+                "description": "Packaging the device to return to customer"
               }
             ]
           }
